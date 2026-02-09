@@ -22,9 +22,6 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# 前端目录（相对于 backend/）
-_FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend"
-
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -62,12 +59,13 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 app.include_router(jobs.router)
 
 # 挂载前端静态资源
-if _FRONTEND_DIR.exists():
-    app.mount("/css", StaticFiles(directory=_FRONTEND_DIR / "css"), name="css")
-    app.mount("/js", StaticFiles(directory=_FRONTEND_DIR / "js"), name="js")
+_FE = settings.frontend_dir
+if _FE.exists():
+    app.mount("/css", StaticFiles(directory=_FE / "css"), name="css")
+    app.mount("/js", StaticFiles(directory=_FE / "js"), name="js")
 
     @app.get("/")
     async def index():
-        return FileResponse(_FRONTEND_DIR / "index.html")
+        return FileResponse(_FE / "index.html")
 else:
-    logger.warning("前端目录不存在: %s，仅提供 API 服务", _FRONTEND_DIR)
+    logger.warning("前端目录不存在: %s，仅提供 API 服务", _FE)

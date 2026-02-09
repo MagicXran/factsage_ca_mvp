@@ -4,14 +4,22 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 from pathlib import Path
 from typing import Any, Dict
 
-# backend/ 目录（config.json 所在位置）
-_BACKEND_DIR = Path(__file__).resolve().parent.parent
+# ── 基准目录 ──────────────────────────────────────────
+# 打包模式 (PyInstaller): exe 所在目录
+# 开发模式: backend/ 目录
+_IS_FROZEN = getattr(sys, "frozen", False)
+_BASE_DIR = (
+    Path(sys.executable).resolve().parent
+    if _IS_FROZEN
+    else Path(__file__).resolve().parent.parent
+)
 
 _DEFAULT_CONFIG: Dict[str, Any] = {
-    "server": {"host": "0.0.0.0", "port": 8000},
+    "server": {"host": "127.0.0.1", "port": 8000},
     "factsage": {
         "dir": r"C:\FactSage",
         "exe_name": "EquiSage.exe",
@@ -19,8 +27,9 @@ _DEFAULT_CONFIG: Dict[str, Any] = {
     },
     "paths": {
         "work_root": "./work",
-        "templates_dir": "../cites/templates",
-        "presets_dir": "../cites/jobs",
+        "templates_dir": "templates" if _IS_FROZEN else "../cites/templates",
+        "presets_dir": "presets" if _IS_FROZEN else "../cites/jobs",
+        "frontend_dir": "frontend" if _IS_FROZEN else "../frontend",
     },
     "mock": {"enabled": "auto", "delay_seconds": 1.5},
 }
@@ -41,7 +50,7 @@ class Settings:
     """全局配置：config.json → 环境变量 → 自动检测"""
 
     def __init__(self, config_path: Path | None = None) -> None:
-        cfg_path = config_path or _BACKEND_DIR / "config.json"
+        cfg_path = config_path or _BASE_DIR / "config.json"
         if cfg_path.exists():
             with open(cfg_path, "r", encoding="utf-8") as f:
                 user_cfg = json.load(f)
@@ -52,9 +61,9 @@ class Settings:
     # ── 路径解析 ──────────────────────────────────────────
 
     def _resolve(self, raw: str) -> Path:
-        """相对路径基于 backend/ 目录解析，绝对路径原样返回"""
+        """相对路径基于 _BASE_DIR 解析，绝对路径原样返回"""
         p = Path(os.path.expandvars(raw))
-        return p if p.is_absolute() else (_BACKEND_DIR / p).resolve()
+        return p if p.is_absolute() else (_BASE_DIR / p).resolve()
 
     # ── FactSage ──────────────────────────────────────────
 
@@ -88,6 +97,12 @@ class Settings:
     def presets_dir(self) -> Path:
         return self._resolve(
             os.getenv("PRESETS_DIR") or self._cfg["paths"]["presets_dir"]
+        )
+
+    @property
+    def frontend_dir(self) -> Path:
+        return self._resolve(
+            os.getenv("FRONTEND_DIR") or self._cfg["paths"]["frontend_dir"]
         )
 
     # ── 服务器 ────────────────────────────────────────────

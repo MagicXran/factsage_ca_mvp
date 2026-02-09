@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FactSage Ca 用量估算</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- 顶栏 -->
+    <header class="header">
+        <h1>FactSage Ca 用量估算系统</h1>
+        <div class="header-info">
+            <span id="modeTag" class="tag tag-mock">Mock 模式</span>
+        </div>
+    </header>
+
+    <!-- 计算类型切换 -->
+    <nav class="calc-tabs">
+        <button class="tab active" data-type="deoxidation">脱氧计算</button>
+        <button class="tab" data-type="desulfurization">脱硫计算</button>
+    </nav>
+
+    <main class="main-grid">
+        <!-- ── 左侧：输入 ── -->
+        <section class="card input-panel">
+            <h2>输入参数</h2>
+
+            <fieldset>
+                <legend>钢液组成 (g)</legend>
+                <div class="field-grid">
+                    <label>Fe <input type="number" id="Fe_g" step="any"></label>
+                    <label>Mn <input type="text"   id="Mn_field" placeholder="留空=不加入" value="1"></label>
+                    <label>Si <input type="number" id="Si_g" step="any"></label>
+                    <label>Al <input type="number" id="Al_g" step="any"></label>
+                    <label>O  <input type="number" id="O_g"  step="any"></label>
+                    <label>S  <input type="number" id="S_g"  step="any"></label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>渣组成 (g)</legend>
+                <div class="field-grid">
+                    <label>CaO    <input type="number" id="CaO_g"   step="any"></label>
+                    <label>Al₂O₃  <input type="number" id="Al2O3_g" step="any"></label>
+                    <label>SiO₂   <input type="number" id="SiO2_g"  step="any"></label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>工况条件</legend>
+                <div class="field-grid">
+                    <label>温度 (°C)  <input type="number" id="T_C" step="any"></label>
+                    <label>压力 (atm) <input type="number" id="P_atm" step="any" value="1"></label>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>目标设定</legend>
+                <div class="field-grid">
+                    <label>目标元素
+                        <select id="target_element">
+                            <option value="Al">Al (脱氧)</option>
+                            <option value="S">S (脱硫)</option>
+                        </select>
+                    </label>
+                    <label>目标值 (质量分数) <input type="number" id="target_value" step="any"></label>
+                    <label>Alpha 猜测 <input type="number" id="alpha_guess" step="any" value="0.5"></label>
+                </div>
+            </fieldset>
+
+            <div class="btn-row">
+                <button id="btnPreset" class="btn btn-secondary">加载预设</button>
+                <button id="btnCalc"   class="btn btn-primary">开始计算</button>
+            </div>
+        </section>
+
+        <!-- ── 右侧：结果 ── -->
+        <section class="card result-panel">
+            <h2>计算结果</h2>
+
+            <div id="resultPlaceholder" class="placeholder">
+                提交计算后，结果将在此显示
+            </div>
+
+            <div id="resultContent" class="result-content hidden">
+                <!-- Ca 用量 -->
+                <div class="result-highlight">
+                    <span class="label">Ca 需要量</span>
+                    <span class="value" id="resAlpha">—</span>
+                    <span class="unit">g</span>
+                </div>
+
+                <div class="result-columns">
+                    <!-- 钢液 -->
+                    <div class="result-block">
+                        <h3>钢液平衡组成</h3>
+                        <table id="steelTable">
+                            <thead><tr><th>元素</th><th>wt%</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <!-- 渣 -->
+                    <div class="result-block">
+                        <h3>渣平衡组成</h3>
+                        <table id="slagTable">
+                            <thead><tr><th>组分</th><th>wt%</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultLoading" class="placeholder hidden">
+                <div class="spinner"></div>
+                <p>计算中，请稍候...</p>
+            </div>
+
+            <div id="resultError" class="placeholder error hidden">
+                <p id="errorMsg"></p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── 底部：历史记录 ── -->
+    <section class="card history-panel">
+        <h2>历史记录</h2>
+        <table id="historyTable">
+            <thead>
+                <tr>
+                    <th>任务 ID</th>
+                    <th>类型</th>
+                    <th>Ca 用量 (g)</th>
+                    <th>状态</th>
+                    <th>时间</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <p id="historyEmpty" class="placeholder">暂无记录</p>
+    </section>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

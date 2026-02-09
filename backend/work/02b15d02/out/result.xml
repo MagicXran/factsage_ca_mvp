@@ -1,0 +1,1196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Reference : 
+T = temperature
+P = pressure
+V = volume
+n = moles
+g = grams
+a = activity
+X = mol fraction
+w = weight %
+mw = molecular weight
+Z = G (Gibbs energy), H (enthalpy), S (entropy), Cp (heat capacaity)
+Zint = integral G, H, S or Cp
+Zpar = partial  G, H, S or Cp
+Zintxs = integral excess G, H or S
+Zparxs = partial excess  G, H or S
+-->
+<file id="001" version="5.60" user="0908  Wuhu Xinxing Ductile Iron Pipes Co. Ltd" date="09Feb26  14:12:37" formula="(gram) 98.437 Fe  +  Mn  +  0.5 Si  +  0.05 Al  +  0.003 O  +  0.01 S  +  4.0 CaO  +  4.0 Al2O3  +   2.0 SiO2  +  &lt;A&gt; Ca  =(nl)" react_lines="1">
+<!--
+#EData: Contents Equi0.dat
+<FILE>
+FILE    0    14:12    09Feb26  Wuhu Xinxing Ductile Iron Pipes Co. Ltd    FactSage 8.3
+last system
+'O' '13'
+'TC' 'ATM' 'J' 'NOVPT' 'NOPHYS' 'CUT' '1e-75 1e-75' 'WIN' 'NOTH' '%' 'NOAQUA' 'NOEPH' 
+'O' '10'
+'CXHY' '2' 'NOGIONTK' '2000' 'NODEMO' 'NOVIR' 'DILEX' '1e+7' 'NOG25' 'MINS2'
+'O' '7'
+'LIM' '250' '10000' '1.000E-35' '1.000E+08' '1.000E-08' '1.000E+35' 
+'O' '6'
+'NOTRNS' 'TRNUM' '0'  'NOPARA' '' ' 7   1  2  3  4  5  6  7' 
+'O' '4'
+'ESTA' '0.5' '' '0'
+'O' '3'
+'ISOP' '0' ''
+'O' '2'
+'OPEN' '7'
+'R' 'NEW'
+ 98.437 Fe  +  Mn  +  0.5 Si  +  0.05 Al  + 
+'I' '   '
+ (25,1,s1-FactPS,#1) (25,1,s1-FactPS,#1) (25,1,s-FactPS,#1) (25,1,s-FactPS,#1)
+'R' 'NEW'
+ 0.003 O  +  0.01 S  +  4.0 CaO  +  4.0 Al2O3  + 
+'I' '   '
+ (25,1,g-FactPS,#1) (25,1,s1-FactPS,#1) (25,1,s-FactPS,#1) (25,1,s1-FactPS,#1)
+'R' 'NEW'
+ 2.0 SiO2  +  &lt;A&gt; Ca  =
+'I' '   '
+ (25,1,s1-FactPS,#1) (25,1,s1-FactPS,#1)
+'F' 'WIN'
+ 'T' '1600.0' 'P' '1.0' 'DH' ''
+'DAT1' ' 3'
+FT53 MI53 OX53 
+'DAT2' ' 2'
+MI53 OX53 
+'DAT3' '0'
+ 
+'GRID' 
+GRIDOPS   0  0  
+GRIDLHS  3 1 1 2 1 3 1
+GRIDRHS  3 1 1 2 1 3 1  1
+GRIDPROP SOURCE  0 IOPT  0
+GRIDEND
+'SS' '292'
+  64    +    101  1 Al
+  69    +    101  1 Si
+  83    +    101  1 S
+  84    +    102  1 S
+  85    +    101  1 SO3
+  86    +    101  1 Al2S3
+  87    +    101  1 Al2(SO4)3
+  88    +    101  1 SiS
+  89    +    101  1 SiS2
+  90    +    101  1 Ca
+  91    +    102  1 Ca
+  93    +    101  1 CaO2
+  94    +    101  1 Al2Ca
+  95    +    101  1 Al4Ca
+ 100    +    101  1 CaSi
+ 101    +    101  1 CaSi2
+ 102    +    101  1 Ca2Si
+ 115    +    101  1 CaS
+ 116    +    101  1 CaSO3
+ 117    +    101  1 CaSO4
+ 118    +    102  1 CaSO4
+ 119    +    101  1 Mn
+ 120    +    102  1 Mn
+ 121    +    103  1 Mn
+ 122    +    104  1 Mn
+ 130    +    101  1 MnSi
+ 131    +    101  1 Mn3Si
+ 132    +    101  1 Mn5Si3
+ 133    +    101  1 Mn10Si17
+ 139    +    101  1 MnS
+ 140    +    101  1 MnS2
+ 141    +    101  1 MnSO4
+ 142    +    101  1 Fe
+ 143    +    102  1 Fe
+ 152    +    101  1 FeAl3
+ 155    +    101  1 FeSi
+ 156    +    101  1 FeSi2
+ 157    +    101  1 Fe3Si
+ 158    +    101  1 Fe3Si7
+ 170    +    101  1 FeS2
+ 171    +    101  1 Fe7S8
+ 172    +    101  1 Fe9S10
+ 173    +    101  1 Fe10S11
+ 174    +    101  1 Fe11S12
+ 175    +    101  1 FeSO4
+ 176    +    101  1 Fe2(SO4)3
+ 184    +    101  2 FeS
+ 185    +    102  2 FeS
+ 186    +    103  2 FeS
+ 187    +    101  3 Al2O3
+ 188    +    102  3 Al2O3
+ 189    +    103  3 Al2O3
+ 190    +    104  3 Al2O3
+ 191    +    101  3 SiO2
+ 192    +    102  3 SiO2
+ 193    +    103  3 SiO2
+ 194    +    104  3 SiO2
+ 195    +    105  3 SiO2
+ 196    +    106  3 SiO2
+ 197    +    107  3 SiO2
+ 198    +    108  3 SiO2
+ 199    +    101  3 Al2Si2O7
+ 200    +    101  3 CaO
+ 201    +    101  3 CaAl2O4
+ 202    +    101  3 CaAl4O7
+ 203    +    101  3 CaAl12O19
+ 204    +    101  3 Ca3Al2O6
+ 205    +    101  3 CaSiO3
+ 206    +    102  3 CaSiO3
+ 207    +    101  3 Ca2SiO4
+ 208    +    102  3 Ca2SiO4
+ 209    +    103  3 Ca2SiO4
+ 210    +    101  3 Ca3SiO5
+ 211    +    101  3 Ca3Si2O7
+ 212    +    101  3 CaAl2SiO6
+ 213    +    101  3 CaAl2Si2O8
+ 214    +    102  3 CaAl2Si2O8
+ 215    +    101  3 Ca2Al2SiO7
+ 216    +    101  3 Ca3Al2Si3O12
+ 217    +    101  3 MnO
+ 218    +    101  3 MnO2
+ 219    +    101  3 Mn2O3
+ 220    +    102  3 Mn2O3
+ 221    +    101  3 MnSiO3
+ 222    +    101  3 Mn2SiO4
+ 223    +    101  3 Mn2Al4Si5O18
+ 224    +    101  3 Mn3Al2Si3O12
+ 225    +    101  3 CaMnO3
+ 226    +    101  3 Ca2MnO4
+ 227    +    101  3 CaMn2O4
+ 228    +    101  3 Ca3Mn2O7
+ 229    +    101  3 CaMn3O6
+ 230    +    101  3 Ca2Mn3O8
+ 231    +    101  3 Ca4Mn3O10
+ 232    +    101  3 CaMn4O8
+ 233    +    101  3 CaMn7O12
+ 234    +    101  3 Fe2O3
+ 235    +    102  3 Fe2O3
+ 236    +    103  3 Fe2O3
+ 237    +    101  3 Al2Fe2O6
+ 238    +    101  3 FeSiO3
+ 239    +    102  3 FeSiO3
+ 240    +    103  3 FeSiO3
+ 241    +    101  3 Fe2SiO4
+ 242    +    102  3 Fe2SiO4
+ 243    +    103  3 Fe2SiO4
+ 244    +    101  3 Fe2Al4Si5O18
+ 245    +    101  3 Fe3Al2Si3O12
+ 246    +    101  3 CaFe2O4
+ 247    +    101  3 Ca2Fe2O5
+ 248    +    101  3 CaFe4O7
+ 249    +    101  3 CaFeSi2O6
+ 250    +    101  3 Ca2FeSi2O7
+ 251    +    101  3 Ca3Fe2Si3O12
+   0    +      0  1 SOLN-FELQ  // 1 FTmisc FeLQ     Fe-liq
+   0    +      0  1 SOLN-MATT  // 1 FTmisc MATT     Matte
+   0    +      0  1 SOLN-FES_  // 1 FTmisc FeS_     FeS-liq
+   0    I      0  2 SOLN-SLAGA // 2 FToxid SLAGA    A-Slag-liq all oxides + S
+   0    I      0  2 SOLN-SPINB // 2 FToxid SPINB    B-Spinel
+   0    I      0  2 SOLN-MEO_A // 2 FToxid MeO_A    A-Monoxide
+   0    +      0  2 SOLN-CPYRA // 1 FToxid cPyrA    A-Clinopyroxene
+   0    +      0  2 SOLN-WOLLA // 1 FToxid WOLLA    A-Wollastonite,
+   0    +      0  2 SOLN-BC2SA // 1 FToxid bC2SA    A-a'(Ca,Sr,Ba)2SiO4
+   0    +      0  2 SOLN-AC2SA // 1 FToxid aC2SA    A-a-(Ca,Sr)2SiO4
+   0    +      0  2 SOLN-MEL_A // 1 FToxid Mel_A    A-Melilite
+   0    I      0  2 SOLN-OLIVA // 2 FToxid OlivA    A-Olivine
+   0    I      0  2 SOLN-MULL  // 2 FToxid Mull     Mullite
+   0    +      0  2 SOLN-CAFS  // 1 FToxid CAFS     Ca2(Al,Fe)8SiO16
+   0    +      0  2 SOLN-CAF6  // 1 FToxid CAF6     Ca(Al,Fe)12O19
+   0    +      0  2 SOLN-CAF3  // 1 FToxid CAF3     Ca(Al,Fe)6O10
+   0    +      0  2 SOLN-CAF2  // 1 FToxid CAF2     Ca(Al,Fe)4O7
+   0    I      0  2 SOLN-CAF1  // 2 FToxid CAF1     Ca(Al,Fe)2O4
+   0    +      0  2 SOLN-C2AF  // 1 FToxid C2AF     Ca2(Al,Fe)2O5
+   0    +      0  2 SOLN-C3AF  // 1 FToxid C3AF     Ca3(Al,Fe)2O6
+   0    I      0  2 SOLN-CORU  // 2 FToxid CORU     M2O3(Corundum)
+   0    +      0  2 SOLN-TSPIA // 1 FToxid TSpiA    A-Tetragonal-Spinel
+   0    +      0  2 SOLN-BIXB  // 1 FToxid Bixb     Mn2O3(Bixbyite)
+   0    +      0  2 SOLN-BRAU  // 1 FToxid Brau     Braunite_Mn7SiO12
+   0    +      0  2 SOLN-RHOD  // 1 FToxid Rhod     Rhodonite
+ 277    C      0  1 SOLN-FELQ  Fe Al -1 0.0001
+SSEND
+ENDF    0
+//  98.437 Fe  +  Mn  +  0.5 Si  +  0.05 Al  +  \\ 
+
+</FILE>
+<DATA>
+Compound:  FactPS FS53BASE.CDB - FactPS - FACT pure substances database (2023) 
+Compound:  FTmisc FTMISC53BASE.CDB - FTmisc - FACT sulfide, alloy, micellaneous compounds (2023) 
+Compound:  FToxid FTOXID53BASE.CDB - FToxid - FACT oxide compounds (2023) 
+Solution:  FTmisc FTMISC53SOLN.SDC - FTmisc - FACT sulfide, alloy, miscellaneous solutions (2023) 
+Solution:  FToxid FTOXID53SOLN.SDC - FToxid - FACT oxide solutions (2023) 
+</DATA>
+<SYSTEM>
+-->
+<header>
+    <system_units T_units="K" P_units="bar" V_units="litre" energy_units="J" mass_units="mol" />
+    <user_units T_units="C" P_units="atm" V_units="litre" energy_units="J" mass_gas="l" mass_solutions="g" mass_compounds="g" comp_soln="def" comp_gas="def" show_stream="0" />
+    <system_limits reactants="10" components="14" solutions="33" compounds="114" species="366" pages="7" />
+    <reactant id="1" name="Fe" mw="5.58450000E+01" stream="1" sid="515"/>
+    <reactant id="2" name="Mn" mw="5.49380450E+01" stream="1" sid="516"/>
+    <reactant id="3" name="Si" mw="2.80855000E+01" stream="1" sid="517"/>
+    <reactant id="4" name="Al" mw="2.69815386E+01" stream="1" sid="518"/>
+    <reactant id="5" name="O" mw="1.59994000E+01" stream="1" sid="519"/>
+    <reactant id="6" name="S" mw="3.20650000E+01" stream="1" sid="520"/>
+    <reactant id="7" name="CaO" mw="5.60774000E+01" stream="1" sid="521"/>
+    <reactant id="8" name="Al2O3" mw="1.01961277E+02" stream="1" sid="522"/>
+    <reactant id="9" name="SiO2" mw="6.00843000E+01" stream="1" sid="523"/>
+    <reactant id="10" name="Ca" mw="4.00780000E+01" stream="1" sid="524"/>
+    <component id="1" name="Fe" mw="5.584500000000000E+01"/>
+    <component id="2" name="Mn" mw="5.493804500000000E+01"/>
+    <component id="3" name="Ca" mw="4.007800000000000E+01"/>
+    <component id="4" name="S" mw="3.206500000000000E+01"/>
+    <component id="5" name="Si" mw="2.808550000000000E+01"/>
+    <component id="6" name="Al" mw="2.698153860000000E+01"/>
+    <component id="7" name="O" mw="1.599940000000000E+01"/>
+    <component id="8" name="EA" mw="5.485799094873135E-04"/>
+    <component id="9" name="EA" mw="5.485799094873135E-04"/>
+    <component id="10" name="EA" mw="5.485799094873135E-04"/>
+    <component id="11" name="EA" mw="5.485799094873135E-04"/>
+    <component id="12" name="EA" mw="5.485799094873135E-04"/>
+    <component id="13" name="EA" mw="5.485799094873135E-04"/>
+    <component id="14" name="EA" mw="5.485799094873135E-04"/>
+    <species_definition>
+        <solution phase_id="1" state="Gas" species="0"  model="0" type="GAS" target="0">
+        </solution>
+        <solution phase_id="2" state="FTmisc-Fe-liq" species="12"  model="2" type="DILUTE" target="0">
+            <species id="1" name="Fe" phase="SOLN" source="FTmisc" components=" 1 0 0 0 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="2" name="Al" phase="SOLN" source="FTmisc" components=" 0 0 0 0 0 1 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="3" name="Ca" phase="SOLN" source="FTmisc" components=" 0 0 1 0 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="4" name="Mn" phase="SOLN" source="FTmisc" components=" 0 1 0 0 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="5" name="O" phase="SOLN" source="FTmisc" components=" 0 0 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="6" name="S" phase="SOLN" source="FTmisc" components=" 0 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="7" name="Si" phase="SOLN" source="FTmisc" components=" 0 0 0 0 1 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="8" name="CaO" phase="SOLN" source="FTmisc" components=" 0 0 1 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="9" name="AlO" phase="SOLN" source="FTmisc" components=" 0 0 0 0 0 1 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="10" name="SiO" phase="SOLN" source="FTmisc" components=" 0 0 0 0 1 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="11" name="MnO" phase="SOLN" source="FTmisc" components=" 0 1 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="12" name="Al2O" phase="SOLN" source="FTmisc" components=" 0 0 0 0 0 2 1 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="3" state="FTmisc-Matte" species="2"  model="3" type="SOLUTION" target="0">
+            <species id="13" name="S" phase="SOLN" source="FTmisc" components=" 0 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="14" name="Fe" phase="SOLN" source="FTmisc" components=" 1 0 0 0 0 0 0 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="4" state="FTmisc-FeS-liq" species="4"  model="1" type="SOLUTION" target="0">
+            <species id="15" name="Fe" phase="SOLN" source="FTmisc" components=" 1 0 0 0 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="16" name="FeS" phase="SOLN" source="FTmisc" components=" 1 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="17" name="FeO" phase="SOLN" source="FTmisc" components=" 1 0 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="18" name="MnS" phase="SOLN" source="FTmisc" components=" 0 1 0 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="5" state="FToxid-Slag-liq#1" species="14"  model="98" type="SOLUTION" target="0">
+            <species id="19" name="Al2O3" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="20" name="SiO2" phase="SOLN" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0" />
+            <species id="21" name="CaO" phase="SOLN" source="FToxid" components=" 0 0 1 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="22" name="FeO" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="23" name="Fe2O3" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="24" name="MnO" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="25" name="Mn2O3" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="26" name="Al2S3" phase="SOLN" source="FToxid" components=" 0 0 0 3 0 2 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="27" name="SiS2" phase="SOLN" source="FToxid" components=" 0 0 0 2 1 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="28" name="CaS" phase="SOLN" source="FToxid" components=" 0 0 1 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="29" name="FeS" phase="SOLN" source="FToxid" components=" 1 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="30" name="Fe2S3" phase="SOLN" source="FToxid" components=" 2 0 0 3 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="31" name="MnS" phase="SOLN" source="FToxid" components=" 0 1 0 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="32" name="Mn2S3" phase="SOLN" source="FToxid" components=" 0 2 0 3 0 0 0 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="6" state="FToxid-Slag-liq#2" species="14"  model="98" type="SOLUTION" target="0">
+            <species id="33" name="Al2O3" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="34" name="SiO2" phase="SOLN" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0" />
+            <species id="35" name="CaO" phase="SOLN" source="FToxid" components=" 0 0 1 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="36" name="FeO" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="37" name="Fe2O3" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="38" name="MnO" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="39" name="Mn2O3" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="40" name="Al2S3" phase="SOLN" source="FToxid" components=" 0 0 0 3 0 2 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="41" name="SiS2" phase="SOLN" source="FToxid" components=" 0 0 0 2 1 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="42" name="CaS" phase="SOLN" source="FToxid" components=" 0 0 1 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="43" name="FeS" phase="SOLN" source="FToxid" components=" 1 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="44" name="Fe2S3" phase="SOLN" source="FToxid" components=" 2 0 0 3 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="45" name="MnS" phase="SOLN" source="FToxid" components=" 0 1 0 1 0 0 0 0 0 0 0 0 0 0" charge="0" />
+            <species id="46" name="Mn2S3" phase="SOLN" source="FToxid" components=" 0 2 0 3 0 0 0 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="7" state="FToxid-Spinel#1" species="28"  model="12" type="SOLUTION" target="0">
+            <species id="47" name="Fe3O4" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="48" name="Fe3O4[1-]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 1 0 0 0 0 0 0" charge="-1" />
+            <species id="49" name="Fe3O4[1+]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 -1 0 0 0 0 0 0" charge="1" />
+            <species id="50" name="Fe3O4[2-]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 2 0 0 0 0 0 0" charge="-2" />
+            <species id="51" name="Fe1O4[5-]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 4 5 0 0 0 0 0 0" charge="-5" />
+            <species id="52" name="Fe1O4[6-]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 4 6 0 0 0 0 0 0" charge="-6" />
+            <species id="53" name="Fe1Al2O4" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="54" name="Al3O4[1+]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 3 4 -1 0 0 0 0 0 0" charge="1" />
+            <species id="55" name="Al1Fe2O4[1-]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 4 1 0 0 0 0 0 0" charge="-1" />
+            <species id="56" name="Al1O4[5-]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 1 4 5 0 0 0 0 0 0" charge="-5" />
+            <species id="57" name="Fe1Al2O4[1+]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 4 -1 0 0 0 0 0 0" charge="1" />
+            <species id="58" name="Al1Fe2O4[1+]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 4 -1 0 0 0 0 0 0" charge="1" />
+            <species id="59" name="Mn1Mn2O4" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="60" name="Mn1Mn2O4[2-]" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 2 0 0 0 0 0 0" charge="-2" />
+            <species id="61" name="Mn1Mn2O4[2+]" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 -2 0 0 0 0 0 0" charge="2" />
+            <species id="62" name="Mn1Va2O4[6-]" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 0 4 6 0 0 0 0 0 0" charge="-6" />
+            <species id="63" name="Mn1Fe2O4" phase="SOLN" source="FToxid" components=" 2 1 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="64" name="Fe1Mn2O4[1-]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 1 0 0 0 0 0 0" charge="-1" />
+            <species id="65" name="Fe1Mn2O4[2-]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 2 0 0 0 0 0 0" charge="-2" />
+            <species id="66" name="Mn1Fe2O4[2-]" phase="SOLN" source="FToxid" components=" 2 1 0 0 0 0 4 2 0 0 0 0 0 0" charge="-2" />
+            <species id="67" name="Fe1Mn2O4" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="68" name="Fe1Mn2O4[2+]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 -2 0 0 0 0 0 0" charge="2" />
+            <species id="69" name="Fe1Mn2O4[1+]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 -1 0 0 0 0 0 0" charge="1" />
+            <species id="70" name="Fe1Mn2O4[3+]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 -3 0 0 0 0 0 0" charge="3" />
+            <species id="71" name="MnAl2O4" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 2 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="72" name="AlMn2O4[-1]" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 1 4 1 0 0 0 0 0 0" charge="-1" />
+            <species id="73" name="AlMn2O4[+1]" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 1 4 -1 0 0 0 0 0 0" charge="1" />
+            <species id="74" name="AlMn2O4[+3]" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 1 4 -3 0 0 0 0 0 0" charge="3" />
+        </solution>
+        <solution phase_id="8" state="FToxid-Spinel#2" species="28"  model="12" type="SOLUTION" target="0">
+            <species id="75" name="Fe3O4" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="76" name="Fe3O4[1-]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 0 1 0 0 0 0 0" charge="-1" />
+            <species id="77" name="Fe3O4[1+]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 0 -1 0 0 0 0 0" charge="1" />
+            <species id="78" name="Fe3O4[2-]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 0 2 0 0 0 0 0" charge="-2" />
+            <species id="79" name="Fe1O4[5-]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 4 0 5 0 0 0 0 0" charge="-5" />
+            <species id="80" name="Fe1O4[6-]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 4 0 6 0 0 0 0 0" charge="-6" />
+            <species id="81" name="Fe1Al2O4" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="82" name="Al3O4[1+]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 3 4 0 -1 0 0 0 0 0" charge="1" />
+            <species id="83" name="Al1Fe2O4[1-]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 4 0 1 0 0 0 0 0" charge="-1" />
+            <species id="84" name="Al1O4[5-]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 1 4 0 5 0 0 0 0 0" charge="-5" />
+            <species id="85" name="Fe1Al2O4[1+]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 4 0 -1 0 0 0 0 0" charge="1" />
+            <species id="86" name="Al1Fe2O4[1+]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 4 0 -1 0 0 0 0 0" charge="1" />
+            <species id="87" name="Mn1Mn2O4" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="88" name="Mn1Mn2O4[2-]" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 0 2 0 0 0 0 0" charge="-2" />
+            <species id="89" name="Mn1Mn2O4[2+]" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 0 -2 0 0 0 0 0" charge="2" />
+            <species id="90" name="Mn1Va2O4[6-]" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 0 4 0 6 0 0 0 0 0" charge="-6" />
+            <species id="91" name="Mn1Fe2O4" phase="SOLN" source="FToxid" components=" 2 1 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="92" name="Fe1Mn2O4[1-]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 1 0 0 0 0 0" charge="-1" />
+            <species id="93" name="Fe1Mn2O4[2-]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 2 0 0 0 0 0" charge="-2" />
+            <species id="94" name="Mn1Fe2O4[2-]" phase="SOLN" source="FToxid" components=" 2 1 0 0 0 0 4 0 2 0 0 0 0 0" charge="-2" />
+            <species id="95" name="Fe1Mn2O4" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="96" name="Fe1Mn2O4[2+]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 -2 0 0 0 0 0" charge="2" />
+            <species id="97" name="Fe1Mn2O4[1+]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 -1 0 0 0 0 0" charge="1" />
+            <species id="98" name="Fe1Mn2O4[3+]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 -3 0 0 0 0 0" charge="3" />
+            <species id="99" name="MnAl2O4" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 2 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="100" name="AlMn2O4[-1]" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 1 4 0 1 0 0 0 0 0" charge="-1" />
+            <species id="101" name="AlMn2O4[+1]" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 1 4 0 -1 0 0 0 0 0" charge="1" />
+            <species id="102" name="AlMn2O4[+3]" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 1 4 0 -3 0 0 0 0 0" charge="3" />
+        </solution>
+        <solution phase_id="9" state="FToxid-Monoxide#1" species="6"  model="1" type="SOLUTION" target="0">
+            <species id="103" name="FeO" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="104" name="Fe2O3" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="105" name="CaO" phase="SOLN" source="FToxid" components=" 0 0 1 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="106" name="Al2O3" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="107" name="MnO" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="108" name="Mn2O3" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="10" state="FToxid-Monoxide#2" species="6"  model="1" type="SOLUTION" target="0">
+            <species id="109" name="FeO" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="110" name="Fe2O3" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="111" name="CaO" phase="SOLN" source="FToxid" components=" 0 0 1 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="112" name="Al2O3" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="113" name="MnO" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 0 1 0 0 0 0 0 0 0" charge="0" />
+            <species id="114" name="Mn2O3" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="11" state="FToxid-Clinopyroxene" species="18"  model="12" type="SOLUTION" target="0">
+            <species id="115" name="CaFeSi2O6" phase="SOLN" source="FToxid" components=" 1 0 1 0 2 0 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="116" name="FeFeSi2O6" phase="SOLN" source="FToxid" components=" 2 0 0 0 2 0 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="117" name="CaAl2SiO6" phase="SOLN" source="FToxid" components=" 0 0 1 0 1 2 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="118" name="CaFe3+AlSiO6" phase="SOLN" source="FToxid" components=" 1 0 1 0 1 1 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="119" name="CaAlFe3+SiO6" phase="SOLN" source="FToxid" components=" 1 0 1 0 1 1 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="120" name="CaFe3+Fe3+SiO6" phase="SOLN" source="FToxid" components=" 2 0 1 0 1 0 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="121" name="FeAlAlSiO6" phase="SOLN" source="FToxid" components=" 1 0 0 0 1 2 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="122" name="FeFe3+Fe3+SiO6" phase="SOLN" source="FToxid" components=" 3 0 0 0 1 0 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="123" name="FeFe3+AlSiO6" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 1 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="124" name="FeAlFe3+SiO6" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 1 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="125" name="FeFe3+Si2O6[+]" phase="SOLN" source="FToxid" components=" 2 0 0 0 2 0 6 0 0 -1 0 0 0 0" charge="1" />
+            <species id="126" name="CaFe3+Si2O6[+]" phase="SOLN" source="FToxid" components=" 1 0 1 0 2 0 6 0 0 -1 0 0 0 0" charge="1" />
+            <species id="127" name="CaFeFe3+SiO6[-]" phase="SOLN" source="FToxid" components=" 2 0 1 0 1 0 6 0 0 1 0 0 0 0" charge="-1" />
+            <species id="128" name="FeFeFe3+SiO6[-]" phase="SOLN" source="FToxid" components=" 3 0 0 0 1 0 6 0 0 1 0 0 0 0" charge="-1" />
+            <species id="129" name="CaFeAlSiO6[-]" phase="SOLN" source="FToxid" components=" 1 0 1 0 1 1 6 0 0 1 0 0 0 0" charge="-1" />
+            <species id="130" name="FeFeAlSiO6[-]" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 1 6 0 0 1 0 0 0 0" charge="-1" />
+            <species id="131" name="CaAlSi2O6[+]" phase="SOLN" source="FToxid" components=" 0 0 1 0 2 1 6 0 0 -1 0 0 0 0" charge="1" />
+            <species id="132" name="FeAlSi2O6[+]" phase="SOLN" source="FToxid" components=" 1 0 0 0 2 1 6 0 0 -1 0 0 0 0" charge="1" />
+        </solution>
+        <solution phase_id="12" state="FToxid-Wollastonite," species="3"  model="1" type="SOLUTION" target="0">
+            <species id="133" name="FeSiO3" phase="SOLN" source="FToxid" components=" 1 0 0 0 1 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="134" name="CaSiO3" phase="SOLN" source="FToxid" components=" 0 0 1 0 1 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="135" name="MnSiO3" phase="SOLN" source="FToxid" components=" 0 1 0 0 1 0 3 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="13" state="FToxid-a'(Ca,Sr,Ba)2SiO4" species="3"  model="1" type="SOLUTION" target="0">
+            <species id="136" name="Fe2SiO4" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="137" name="Ca2SiO4" phase="SOLN" source="FToxid" components=" 0 0 2 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="138" name="Mn2SiO4" phase="SOLN" source="FToxid" components=" 0 2 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="14" state="FToxid-a-(Ca,Sr)2SiO4" species="3"  model="1" type="SOLUTION" target="0">
+            <species id="139" name="Ca2SiO4" phase="SOLN" source="FToxid" components=" 0 0 2 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="140" name="Mn2SiO4" phase="SOLN" source="FToxid" components=" 0 2 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="141" name="Fe2SiO4" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="15" state="FToxid-Melilite" species="9"  model="12" type="SOLUTION" target="0">
+            <species id="142" name="Ca2Fe3O7[2-]" phase="SOLN" source="FToxid" components=" 3 0 2 0 0 0 7 0 0 0 2 0 0 0" charge="-2" />
+            <species id="143" name="Ca2Fe3O7[1-]" phase="SOLN" source="FToxid" components=" 3 0 2 0 0 0 7 0 0 0 1 0 0 0" charge="-1" />
+            <species id="144" name="Ca2Fe1Si2O7" phase="SOLN" source="FToxid" components=" 1 0 2 0 2 0 7 0 0 0 0 0 0 0" charge="0" />
+            <species id="145" name="Ca2Fe1Si2O7[1+]" phase="SOLN" source="FToxid" components=" 1 0 2 0 2 0 7 0 0 0 -1 0 0 0" charge="1" />
+            <species id="146" name="Ca2Fe1Al2O7[2-]" phase="SOLN" source="FToxid" components=" 1 0 2 0 0 2 7 0 0 0 2 0 0 0" charge="-2" />
+            <species id="147" name="Ca2Fe1Al2O7[1-]" phase="SOLN" source="FToxid" components=" 1 0 2 0 0 2 7 0 0 0 1 0 0 0" charge="-1" />
+            <species id="148" name="Ca2Al3O7[1-]" phase="SOLN" source="FToxid" components=" 0 0 2 0 0 3 7 0 0 0 1 0 0 0" charge="-1" />
+            <species id="149" name="Ca2Al1Fe2O7[1-]" phase="SOLN" source="FToxid" components=" 2 0 2 0 0 1 7 0 0 0 1 0 0 0" charge="-1" />
+            <species id="150" name="Ca2Al1Si2O7[1+]" phase="SOLN" source="FToxid" components=" 0 0 2 0 2 1 7 0 0 0 -1 0 0 0" charge="1" />
+        </solution>
+        <solution phase_id="16" state="FToxid-Olivine#1" species="9"  model="12" type="SOLUTION" target="0">
+            <species id="151" name="Fe1Fe1Si1O4" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="152" name="Ca1Ca1Si1O4" phase="SOLN" source="FToxid" components=" 0 0 2 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="153" name="Ca1Fe1Si1O4" phase="SOLN" source="FToxid" components=" 1 0 1 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="154" name="Fe1Ca1Si1O4" phase="SOLN" source="FToxid" components=" 1 0 1 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="155" name="Mn1Mn1Si1O4" phase="SOLN" source="FToxid" components=" 0 2 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="156" name="Mn1Ca1Si1O4" phase="SOLN" source="FToxid" components=" 0 1 1 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="157" name="Ca1Mn1Si1O4" phase="SOLN" source="FToxid" components=" 0 1 1 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="158" name="Fe1Mn1Si1O4" phase="SOLN" source="FToxid" components=" 1 1 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="159" name="Mn1Fe1Si1O4" phase="SOLN" source="FToxid" components=" 1 1 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="17" state="FToxid-Olivine#2" species="9"  model="12" type="SOLUTION" target="0">
+            <species id="160" name="Fe1Fe1Si1O4" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="161" name="Ca1Ca1Si1O4" phase="SOLN" source="FToxid" components=" 0 0 2 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="162" name="Ca1Fe1Si1O4" phase="SOLN" source="FToxid" components=" 1 0 1 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="163" name="Fe1Ca1Si1O4" phase="SOLN" source="FToxid" components=" 1 0 1 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="164" name="Mn1Mn1Si1O4" phase="SOLN" source="FToxid" components=" 0 2 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="165" name="Mn1Ca1Si1O4" phase="SOLN" source="FToxid" components=" 0 1 1 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="166" name="Ca1Mn1Si1O4" phase="SOLN" source="FToxid" components=" 0 1 1 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="167" name="Fe1Mn1Si1O4" phase="SOLN" source="FToxid" components=" 1 1 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="168" name="Mn1Fe1Si1O4" phase="SOLN" source="FToxid" components=" 1 1 0 0 1 0 4 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="18" state="FToxid-Mullite#1" species="12"  model="12" type="SOLUTION" target="0">
+            <species id="169" name="Al2Al1O5[-1]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 3 5 0 0 0 0 1 0 0" charge="-1" />
+            <species id="170" name="Al2Al1Va5[+9]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 3 0 0 0 0 0 -9 0 0" charge="9" />
+            <species id="171" name="Al2Si1O5[0]" phase="SOLN" source="FToxid" components=" 0 0 0 0 1 2 5 0 0 0 0 0 0 0" charge="0" />
+            <species id="172" name="Al2Si1Va5[+10]" phase="SOLN" source="FToxid" components=" 0 0 0 0 1 2 0 0 0 0 0 -10 0 0" charge="10" />
+            <species id="173" name="Fe2Fe1O5[-1]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 5 0 0 0 0 1 0 0" charge="-1" />
+            <species id="174" name="Fe2Al1O5[-1]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 5 0 0 0 0 1 0 0" charge="-1" />
+            <species id="175" name="Fe2Si1O5[0]" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 0 5 0 0 0 0 0 0 0" charge="0" />
+            <species id="176" name="Fe2Fe1Va5[+9]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 0 0 0 0 0 -9 0 0" charge="9" />
+            <species id="177" name="Fe2Al1Va5[+9]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 0 0 0 0 0 -9 0 0" charge="9" />
+            <species id="178" name="Fe2Si1Va5[+10]" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 0 0 0 0 0 0 -10 0 0" charge="10" />
+            <species id="179" name="Al2Fe1O5[-1]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 5 0 0 0 0 1 0 0" charge="-1" />
+            <species id="180" name="Al2Fe1Va5[+9]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 0 0 0 0 0 -9 0 0" charge="9" />
+        </solution>
+        <solution phase_id="19" state="FToxid-Mullite#2" species="12"  model="12" type="SOLUTION" target="0">
+            <species id="181" name="Al2Al1O5[-1]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 3 5 0 0 0 0 0 1 0" charge="-1" />
+            <species id="182" name="Al2Al1Va5[+9]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 3 0 0 0 0 0 0 -9 0" charge="9" />
+            <species id="183" name="Al2Si1O5[0]" phase="SOLN" source="FToxid" components=" 0 0 0 0 1 2 5 0 0 0 0 0 0 0" charge="0" />
+            <species id="184" name="Al2Si1Va5[+10]" phase="SOLN" source="FToxid" components=" 0 0 0 0 1 2 0 0 0 0 0 0 -10 0" charge="10" />
+            <species id="185" name="Fe2Fe1O5[-1]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 5 0 0 0 0 0 1 0" charge="-1" />
+            <species id="186" name="Fe2Al1O5[-1]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 5 0 0 0 0 0 1 0" charge="-1" />
+            <species id="187" name="Fe2Si1O5[0]" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 0 5 0 0 0 0 0 0 0" charge="0" />
+            <species id="188" name="Fe2Fe1Va5[+9]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 0 0 0 0 0 0 -9 0" charge="9" />
+            <species id="189" name="Fe2Al1Va5[+9]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 0 0 0 0 0 0 -9 0" charge="9" />
+            <species id="190" name="Fe2Si1Va5[+10]" phase="SOLN" source="FToxid" components=" 2 0 0 0 1 0 0 0 0 0 0 0 -10 0" charge="10" />
+            <species id="191" name="Al2Fe1O5[-1]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 5 0 0 0 0 0 1 0" charge="-1" />
+            <species id="192" name="Al2Fe1Va5[+9]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 0 0 0 0 0 0 -9 0" charge="9" />
+        </solution>
+        <solution phase_id="20" state="FToxid-Ca2(Al,Fe)8SiO16" species="2"  model="1" type="SOLUTION" target="0">
+            <species id="193" name="Ca2Fe8Si1O16" phase="SOLN" source="FToxid" components=" 8 0 2 0 1 0 16 0 0 0 0 0 0 0" charge="0" />
+            <species id="194" name="Ca2Al8Si1O16" phase="SOLN" source="FToxid" components=" 0 0 2 0 1 8 16 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="21" state="FToxid-Ca(Al,Fe)12O19" species="2"  model="1" type="SOLUTION" target="0">
+            <species id="195" name="Ca1Al12O19" phase="SOLN" source="FToxid" components=" 0 0 1 0 0 12 19 0 0 0 0 0 0 0" charge="0" />
+            <species id="196" name="Ca1Fe12O19" phase="SOLN" source="FToxid" components=" 12 0 1 0 0 0 19 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="22" state="FToxid-Ca(Al,Fe)6O10" species="2"  model="1" type="SOLUTION" target="0">
+            <species id="197" name="Ca1Al6O10" phase="SOLN" source="FToxid" components=" 0 0 1 0 0 6 10 0 0 0 0 0 0 0" charge="0" />
+            <species id="198" name="Ca1Fe6O10" phase="SOLN" source="FToxid" components=" 6 0 1 0 0 0 10 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="23" state="FToxid-Ca(Al,Fe)4O7" species="2"  model="1" type="SOLUTION" target="0">
+            <species id="199" name="Ca1Al4O7" phase="SOLN" source="FToxid" components=" 0 0 1 0 0 4 7 0 0 0 0 0 0 0" charge="0" />
+            <species id="200" name="Ca1Fe4O7" phase="SOLN" source="FToxid" components=" 4 0 1 0 0 0 7 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="24" state="FToxid-Ca(Al,Fe)2O4#1" species="2"  model="1" type="SOLUTION" target="0">
+            <species id="201" name="Ca1Al2O4" phase="SOLN" source="FToxid" components=" 0 0 1 0 0 2 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="202" name="Ca1Fe2O4" phase="SOLN" source="FToxid" components=" 2 0 1 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="25" state="FToxid-Ca(Al,Fe)2O4#2" species="2"  model="1" type="SOLUTION" target="0">
+            <species id="203" name="Ca1Al2O4" phase="SOLN" source="FToxid" components=" 0 0 1 0 0 2 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="204" name="Ca1Fe2O4" phase="SOLN" source="FToxid" components=" 2 0 1 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="26" state="FToxid-Ca2(Al,Fe)2O5" species="2"  model="1" type="SOLUTION" target="0">
+            <species id="205" name="Ca2Al2O5" phase="SOLN" source="FToxid" components=" 0 0 2 0 0 2 5 0 0 0 0 0 0 0" charge="0" />
+            <species id="206" name="Ca2Fe2O5" phase="SOLN" source="FToxid" components=" 2 0 2 0 0 0 5 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="27" state="FToxid-Ca3(Al,Fe)2O6" species="2"  model="1" type="SOLUTION" target="0">
+            <species id="207" name="Ca3Al2O6" phase="SOLN" source="FToxid" components=" 0 0 3 0 0 2 6 0 0 0 0 0 0 0" charge="0" />
+            <species id="208" name="Ca3Fe2O6" phase="SOLN" source="FToxid" components=" 2 0 3 0 0 0 6 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="28" state="FToxid-M2O3(Corundum)#1" species="3"  model="1" type="SOLUTION" target="0">
+            <species id="209" name="Al2O3" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="210" name="Fe2O3" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="211" name="Mn2O3" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="29" state="FToxid-M2O3(Corundum)#2" species="3"  model="1" type="SOLUTION" target="0">
+            <species id="212" name="Al2O3" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="213" name="Fe2O3" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="214" name="Mn2O3" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="30" state="FToxid-Tetragonal-Spinel" species="30"  model="12" type="SOLUTION" target="0">
+            <species id="215" name="Fe3O4" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="216" name="Fe3O4[1-]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 0 0 0 0 0 0 1" charge="-1" />
+            <species id="217" name="Fe3O4[1+]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 0 0 0 0 0 0 -1" charge="1" />
+            <species id="218" name="Fe3O4[2-]" phase="SOLN" source="FToxid" components=" 3 0 0 0 0 0 4 0 0 0 0 0 0 2" charge="-2" />
+            <species id="219" name="Fe1O4[5-]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 4 0 0 0 0 0 0 5" charge="-5" />
+            <species id="220" name="Fe1O4[6-]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 0 4 0 0 0 0 0 0 6" charge="-6" />
+            <species id="221" name="Fe1Al2O4" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="222" name="Al3O4[1+]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 3 4 0 0 0 0 0 0 -1" charge="1" />
+            <species id="223" name="Al1Fe2O4[1-]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 4 0 0 0 0 0 0 1" charge="-1" />
+            <species id="224" name="Al1O4[5-]" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 1 4 0 0 0 0 0 0 5" charge="-5" />
+            <species id="225" name="Fe1Al2O4[1+]" phase="SOLN" source="FToxid" components=" 1 0 0 0 0 2 4 0 0 0 0 0 0 -1" charge="1" />
+            <species id="226" name="Al1Fe2O4[1+]" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 1 4 0 0 0 0 0 0 -1" charge="1" />
+            <species id="227" name="Mn1Mn2O4" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="228" name="Mn1Mn2O4[1-]" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 0 0 0 0 0 0 1" charge="-1" />
+            <species id="229" name="Mn1Mn2O4[1+]" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 0 0 0 0 0 0 -1" charge="1" />
+            <species id="230" name="Mn1Mn2O4[2-]" phase="SOLN" source="FToxid" components=" 0 3 0 0 0 0 4 0 0 0 0 0 0 2" charge="-2" />
+            <species id="231" name="Mn1Va2O4[5-]" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 0 4 0 0 0 0 0 0 5" charge="-5" />
+            <species id="232" name="Mn1Va2O4[6-]" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 0 4 0 0 0 0 0 0 6" charge="-6" />
+            <species id="233" name="Mn1Fe2O4" phase="SOLN" source="FToxid" components=" 2 1 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="234" name="Fe1Mn2O4[1-]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 0 0 0 0 0 1" charge="-1" />
+            <species id="235" name="Mn1Fe2O4[2-]" phase="SOLN" source="FToxid" components=" 2 1 0 0 0 0 4 0 0 0 0 0 0 2" charge="-2" />
+            <species id="236" name="Fe1Mn2O4[2-]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 0 0 0 0 0 2" charge="-2" />
+            <species id="237" name="Fe1Mn2O4[1+]" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 0 0 0 0 0 -1" charge="1" />
+            <species id="238" name="Mn1Fe2O4[1+]" phase="SOLN" source="FToxid" components=" 2 1 0 0 0 0 4 0 0 0 0 0 0 -1" charge="1" />
+            <species id="239" name="Fe1Mn2O4" phase="SOLN" source="FToxid" components=" 1 2 0 0 0 0 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="240" name="Mn1Fe2O4[1-]" phase="SOLN" source="FToxid" components=" 2 1 0 0 0 0 4 0 0 0 0 0 0 1" charge="-1" />
+            <species id="241" name="Mn1Al2O4" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 2 4 0 0 0 0 0 0 0" charge="0" />
+            <species id="242" name="Al1Mn2O4[1-]" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 1 4 0 0 0 0 0 0 1" charge="-1" />
+            <species id="243" name="Al1Mn2O4[1+]" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 1 4 0 0 0 0 0 0 -1" charge="1" />
+            <species id="244" name="Mn1Al2O4[1+]" phase="SOLN" source="FToxid" components=" 0 1 0 0 0 2 4 0 0 0 0 0 0 -1" charge="1" />
+        </solution>
+        <solution phase_id="31" state="FToxid-Mn2O3(Bixbyite)" species="3"  model="1" type="SOLUTION" target="0">
+            <species id="245" name="Al2O3" phase="SOLN" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="246" name="Fe2O3" phase="SOLN" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="247" name="Mn2O3" phase="SOLN" source="FToxid" components=" 0 2 0 0 0 0 3 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="32" state="FToxid-Braunite_Mn7SiO12" species="2"  model="12" type="SOLUTION" target="0">
+            <species id="248" name="Mn7SiO12" phase="SOLN" source="FToxid" components=" 0 7 0 0 1 0 12 0 0 0 0 0 0 0" charge="0" />
+            <species id="249" name="Mn8O12" phase="SOLN" source="FToxid" components=" 0 8 0 0 0 0 12 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <solution phase_id="33" state="FToxid-Rhodonite" species="3"  model="1" type="SOLUTION" target="0">
+            <species id="250" name="MnSiO3" phase="SOLN" source="FToxid" components=" 0 1 0 0 1 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="251" name="CaSiO3" phase="SOLN" source="FToxid" components=" 0 0 1 0 1 0 3 0 0 0 0 0 0 0" charge="0" />
+            <species id="252" name="FeSiO3" phase="SOLN" source="FToxid" components=" 1 0 0 0 1 0 3 0 0 0 0 0 0 0" charge="0" />
+        </solution>
+        <compound>
+            <species id="253" name="Al_solid" phase="s" source="FactPS" components=" 0 0 0 0 0 1 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="254" name="Si_solid" phase="s" source="FactPS" components=" 0 0 0 0 1 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="255" name="S_alpha_orthorhombic_A16_oF128_(70)_Fd." phase="s" source="FactPS" components=" 0 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="256" name="S_beta_monoclinic_Ak_mP64_(14)_P21/c" phase="s2" source="FactPS" components=" 0 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="257" name="SO3_solid" phase="s" source="FactPS" components=" 0 0 0 1 0 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="258" name="Al2S3_solid" phase="s" source="FactPS" components=" 0 0 0 3 0 2 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="259" name="Al2(SO4)3_solid" phase="s" source="FactPS" components=" 0 0 0 3 0 2 12 0 0 0 0 0 0 0" charge="0"  />
+            <species id="260" name="SiS_solid" phase="s" source="FactPS" components=" 0 0 0 1 1 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="261" name="SiS2_solid" phase="s" source="FactPS" components=" 0 0 0 2 1 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="262" name="Ca_Solid_Alpha" phase="s" source="FactPS" components=" 0 0 1 0 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="263" name="Ca_Solid_Beta" phase="s2" source="FactPS" components=" 0 0 1 0 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="264" name="CaO2_solid" phase="s" source="FactPS" components=" 0 0 1 0 0 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="265" name="Al2Ca_cF24-Laves_C15" phase="s" source="FactPS" components=" 0 0 1 0 0 2 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="266" name="Al4Ca_tI10-I4/mmm" phase="s" source="FactPS" components=" 0 0 1 0 0 4 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="267" name="CaSi_oC8-Cmcm" phase="s" source="FactPS" components=" 0 0 1 0 1 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="268" name="CaSi2_hR18-R3m" phase="s" source="FactPS" components=" 0 0 1 0 2 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="269" name="Ca2Si_oP12-Pnma" phase="s" source="FactPS" components=" 0 0 2 0 1 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="270" name="CaS_solid" phase="s" source="FactPS" components=" 0 0 1 1 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="271" name="CaSO3_solid" phase="s" source="FactPS" components=" 0 0 1 1 0 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="272" name="CaSO4_Anhydrite_prototype_CaSO4_oS24_(." phase="s" source="FactPS" components=" 0 0 1 1 0 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="273" name="CaSO4_gamma_prototype_CePO4_hP18_(180)" phase="s2" source="FactPS" components=" 0 0 1 1 0 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="274" name="Mn_Solid_Alpha" phase="s" source="FactPS" components=" 0 1 0 0 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="275" name="Mn_Solid_Beta" phase="s2" source="FactPS" components=" 0 1 0 0 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="276" name="Mn_Solid_Gamma" phase="s3" source="FactPS" components=" 0 1 0 0 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="277" name="Mn_Solid_Delta" phase="s4" source="FactPS" components=" 0 1 0 0 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="278" name="MnSi_cP8-P2(1)3" phase="s" source="FactPS" components=" 0 1 0 0 1 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="279" name="Mn3Si_cF16-Fm(-3)m" phase="s" source="FactPS" components=" 0 3 0 0 1 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="280" name="Mn5Si3_hP16-P6(3)/mcm" phase="s" source="FactPS" components=" 0 5 0 0 3 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="281" name="Mn10Si17_solid" phase="s" source="FactPS" components=" 0 10 0 0 17 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="282" name="MnS_Alabandite" phase="s" source="FactPS" components=" 0 1 0 1 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="283" name="MnS2_Hauerite_C2_cP12_(205)_Pa-3" phase="s" source="FactPS" components=" 0 1 0 2 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="284" name="MnSO4_solid" phase="s" source="FactPS" components=" 0 1 0 1 0 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="285" name="Fe_bcc" phase="s" source="FactPS" components=" 1 0 0 0 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="286" name="Fe_fcc" phase="s2" source="FactPS" components=" 1 0 0 0 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="287" name="FeAl3_solid" phase="s" source="FactPS" components=" 1 0 0 0 0 3 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="288" name="FeSi" phase="s" source="FactPS" components=" 1 0 0 0 1 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="289" name="FeSi2_[FeSi2_L]" phase="s" source="FactPS" components=" 1 0 0 0 2 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="290" name="Fe3Si_solid" phase="s" source="FactPS" components=" 3 0 0 0 1 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="291" name="Fe3Si7_[FeSi2_H]" phase="s" source="FactPS" components=" 3 0 0 0 7 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="292" name="FeS2_Pyrite" phase="s" source="FactPS" components=" 1 0 0 2 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="293" name="'Fe7S8'_pyrrhotite-4C" phase="s" source="FactPS" components=" 7.016 0 0 8 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="294" name="Fe9S10_pyrrhotite-5C" phase="s" source="FactPS" components=" 9 0 0 10 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="295" name="Fe10S11_pyrrhotite-11C" phase="s" source="FactPS" components=" 10 0 0 11 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="296" name="Fe11S12_pyrrhotite-6C" phase="s" source="FactPS" components=" 11 0 0 12 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="297" name="FeSO4_solid" phase="s" source="FactPS" components=" 1 0 0 1 0 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="298" name="Fe2(SO4)3_solid" phase="s" source="FactPS" components=" 2 0 0 3 0 0 12 0 0 0 0 0 0 0" charge="0"  />
+            <species id="299" name="FeS_solid" phase="s" source="FTmisc" components=" 1 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="300" name="FeS_solid" phase="s2" source="FTmisc" components=" 1 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="301" name="FeS_solid" phase="s3" source="FTmisc" components=" 1 0 0 1 0 0 0 0 0 0 0 0 0 0" charge="0"  />
+            <species id="302" name="Al2O3_gamma" phase="s" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="303" name="Al2O3_delta" phase="s2" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="304" name="Al2O3_kappa" phase="s3" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="305" name="Al2O3_corundum(alpha)" phase="s4" source="FToxid" components=" 0 0 0 0 0 2 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="306" name="SiO2_Quartz(l)" phase="s" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="307" name="SiO2_Quartz(h)" phase="s2" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="308" name="SiO2_Tridymite(l)" phase="s3" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="309" name="SiO2_Tridymite(h)" phase="s4" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="310" name="SiO2_Cristobalite(l)" phase="s5" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="311" name="SiO2_Cristobalite(h)" phase="s6" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="312" name="SiO2_coesite" phase="s7" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="313" name="SiO2_stishovite" phase="s8" source="FToxid" components=" 0 0 0 0 1 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="314" name="Al2Si2O7_solid" phase="s" source="FToxid" components=" 0 0 0 0 2 2 7 0 0 0 0 0 0 0" charge="0"  />
+            <species id="315" name="CaO_Lime" phase="s" source="FToxid" components=" 0 0 1 0 0 0 1 0 0 0 0 0 0 0" charge="0"  />
+            <species id="316" name="CaAl2O4_solid" phase="s" source="FToxid" components=" 0 0 1 0 0 2 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="317" name="CaAl4O7_solid" phase="s" source="FToxid" components=" 0 0 1 0 0 4 7 0 0 0 0 0 0 0" charge="0"  />
+            <species id="318" name="CaAl12O19_solid" phase="s" source="FToxid" components=" 0 0 1 0 0 12 19 0 0 0 0 0 0 0" charge="0"  />
+            <species id="319" name="Ca3Al2O6_solid" phase="s" source="FToxid" components=" 0 0 3 0 0 2 6 0 0 0 0 0 0 0" charge="0"  />
+            <species id="320" name="CaSiO3_Wollastonite" phase="s" source="FToxid" components=" 0 0 1 0 1 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="321" name="CaSiO3_Ps-wollastonite" phase="s2" source="FToxid" components=" 0 0 1 0 1 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="322" name="Ca2SiO4_Gamma(olivine)" phase="s" source="FToxid" components=" 0 0 2 0 1 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="323" name="Ca2SiO4_Alpha-prime" phase="s2" source="FToxid" components=" 0 0 2 0 1 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="324" name="Ca2SiO4_Alpha" phase="s3" source="FToxid" components=" 0 0 2 0 1 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="325" name="Ca3SiO5_Hatrurite" phase="s" source="FToxid" components=" 0 0 3 0 1 0 5 0 0 0 0 0 0 0" charge="0"  />
+            <species id="326" name="Ca3Si2O7_Rankinite" phase="s" source="FToxid" components=" 0 0 3 0 2 0 7 0 0 0 0 0 0 0" charge="0"  />
+            <species id="327" name="CaAl2SiO6_Ca-Tschermak" phase="s" source="FToxid" components=" 0 0 1 0 1 2 6 0 0 0 0 0 0 0" charge="0"  />
+            <species id="328" name="CaAl2Si2O8_Hexagonal" phase="s" source="FToxid" components=" 0 0 1 0 2 2 8 0 0 0 0 0 0 0" charge="0"  />
+            <species id="329" name="CaAl2Si2O8_Anorthite" phase="s2" source="FToxid" components=" 0 0 1 0 2 2 8 0 0 0 0 0 0 0" charge="0"  />
+            <species id="330" name="Ca2Al2SiO7_Gehlenite" phase="s" source="FToxid" components=" 0 0 2 0 1 2 7 0 0 0 0 0 0 0" charge="0"  />
+            <species id="331" name="Ca3Al2Si3O12_Grossularite" phase="s" source="FToxid" components=" 0 0 3 0 3 2 12 0 0 0 0 0 0 0" charge="0"  />
+            <species id="332" name="MnO_solid" phase="s" source="FToxid" components=" 0 1 0 0 0 0 1 0 0 0 0 0 0 0" charge="0"  />
+            <species id="333" name="MnO2_Pyrolusite" phase="s" source="FToxid" components=" 0 1 0 0 0 0 2 0 0 0 0 0 0 0" charge="0"  />
+            <species id="334" name="Mn2O3_Bixbyite-LT(orthorhombic)" phase="s" source="FToxid" components=" 0 2 0 0 0 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="335" name="Mn2O3_Bixbyite-HT(cubic)" phase="s2" source="FToxid" components=" 0 2 0 0 0 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="336" name="MnSiO3_Rhodonite" phase="s" source="FToxid" components=" 0 1 0 0 1 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="337" name="Mn2SiO4_Tephroite" phase="s" source="FToxid" components=" 0 2 0 0 1 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="338" name="Mn2Al4Si5O18_Mn-cordierite" phase="s" source="FToxid" components=" 0 2 0 0 5 4 18 0 0 0 0 0 0 0" charge="0"  />
+            <species id="339" name="Mn3Al2Si3O12_Spessartine(garnet)" phase="s" source="FToxid" components=" 0 3 0 0 3 2 12 0 0 0 0 0 0 0" charge="0"  />
+            <species id="340" name="CaMnO3_solid" phase="s" source="FToxid" components=" 0 1 1 0 0 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="341" name="Ca2MnO4_solid" phase="s" source="FToxid" components=" 0 1 2 0 0 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="342" name="CaMn2O4_solid" phase="s" source="FToxid" components=" 0 2 1 0 0 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="343" name="Ca3Mn2O7_solid" phase="s" source="FToxid" components=" 0 2 3 0 0 0 7 0 0 0 0 0 0 0" charge="0"  />
+            <species id="344" name="CaMn3O6_solid" phase="s" source="FToxid" components=" 0 3 1 0 0 0 6 0 0 0 0 0 0 0" charge="0"  />
+            <species id="345" name="Ca2Mn3O8_solid" phase="s" source="FToxid" components=" 0 3 2 0 0 0 8 0 0 0 0 0 0 0" charge="0"  />
+            <species id="346" name="Ca4Mn3O10" phase="s" source="FToxid" components=" 0 3 4 0 0 0 10 0 0 0 0 0 0 0" charge="0"  />
+            <species id="347" name="CaMn4O8_solid" phase="s" source="FToxid" components=" 0 4 1 0 0 0 8 0 0 0 0 0 0 0" charge="0"  />
+            <species id="348" name="CaMn7O12_solid" phase="s" source="FToxid" components=" 0 7 1 0 0 0 12 0 0 0 0 0 0 0" charge="0"  />
+            <species id="349" name="Fe2O3_hematite" phase="s" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="350" name="Fe2O3_High-Pressure-Hematite" phase="s2" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="351" name="Fe2O3_High-Pressure-Hematite" phase="s3" source="FToxid" components=" 2 0 0 0 0 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="352" name="Al2Fe2O6_solid" phase="s" source="FToxid" components=" 2 0 0 0 0 2 6 0 0 0 0 0 0 0" charge="0"  />
+            <species id="353" name="FeSiO3_Clino-ferrosilite(metastable)" phase="s" source="FToxid" components=" 1 0 0 0 1 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="354" name="FeSiO3_Fe-perovskite(metastable)" phase="s2" source="FToxid" components=" 1 0 0 0 1 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="355" name="FeSiO3_Ortho-ferrosilite(metastable)" phase="s3" source="FToxid" components=" 1 0 0 0 1 0 3 0 0 0 0 0 0 0" charge="0"  />
+            <species id="356" name="Fe2SiO4_fayalite" phase="s" source="FToxid" components=" 2 0 0 0 1 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="357" name="Fe2SiO4_beta-fayalite(fictive)" phase="s2" source="FToxid" components=" 2 0 0 0 1 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="358" name="Fe2SiO4_gamma-fayalite(spinel)" phase="s3" source="FToxid" components=" 2 0 0 0 1 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="359" name="Fe2Al4Si5O18_Ferrocordierite" phase="s" source="FToxid" components=" 2 0 0 0 5 4 18 0 0 0 0 0 0 0" charge="0"  />
+            <species id="360" name="Fe3Al2Si3O12_Almandine" phase="s" source="FToxid" components=" 3 0 0 0 3 2 12 0 0 0 0 0 0 0" charge="0"  />
+            <species id="361" name="CaFe2O4_solid" phase="s" source="FToxid" components=" 2 0 1 0 0 0 4 0 0 0 0 0 0 0" charge="0"  />
+            <species id="362" name="Ca2Fe2O5_solid" phase="s" source="FToxid" components=" 2 0 2 0 0 0 5 0 0 0 0 0 0 0" charge="0"  />
+            <species id="363" name="CaFe4O7_solid" phase="s" source="FToxid" components=" 4 0 1 0 0 0 7 0 0 0 0 0 0 0" charge="0"  />
+            <species id="364" name="CaFeSi2O6_Hedenbergite(cl-pyroxene)" phase="s" source="FToxid" components=" 1 0 1 0 2 0 6 0 0 0 0 0 0 0" charge="0"  />
+            <species id="365" name="Ca2FeSi2O7_Fe-akermanite(melilite)" phase="s" source="FToxid" components=" 1 0 2 0 2 0 7 0 0 0 0 0 0 0" charge="0"  />
+            <species id="366" name="Ca3Fe2Si3O12_Andradite(garnet)" phase="s" source="FToxid" components=" 2 0 3 0 3 0 12 0 0 0 0 0 0 0" charge="0"  />
+        </compound>
+    </species_definition>
+</header>
+<page id="1" description="  Step 1" alpha="0.000000E+000" P="0.000000E+000" T="0.000000E+000" V_gas="0.000000E+000" V_prod="0.000000E+000" Cp="0.000000E+000" H="0.000000E+000" S="0.000000E+000" G="0.000000E+000" V="0.000000E+000" d_Cp="0.000000E+000" d_H="0.000000E+000" d_S="0.000000E+000" d_G="0.000000E+000" d_V="0.000000E+000">
+    <reactant id="1" n="1.7626824D+00" TK="298.15" pbar="1.0132500D+00" />
+    <reactant id="2" n="1.8202322D-02" TK="298.15" pbar="1.0132500D+00" />
+    <reactant id="3" n="1.7802781D-02" TK="298.15" pbar="1.0132500D+00" />
+    <reactant id="4" n="1.8531189D-03" TK="298.15" pbar="1.0132500D+00" />
+    <reactant id="5" n="1.8750703D-04" TK="298.15" pbar="1.0132500D+00" />
+    <reactant id="6" n="3.1186652D-04" TK="298.15" pbar="1.0132500D+00" />
+    <reactant id="7" n="7.1329983D-02" TK="298.15" pbar="1.0132500D+00" />
+    <reactant id="8" n="3.9230580D-02" TK="298.15" pbar="1.0132500D+00" />
+    <reactant id="9" n="3.3286566D-02" TK="298.15" pbar="1.0132500D+00" />
+    <reactant id="10" n="1.2475672D-02" TK="298.15" pbar="1.0132500D+00" />
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+    <solution id="" n="" g="" a="" Hint="" Sint="" Gint="" Hintxs="" Sintxs="" Gintxs="" Cpint="" Vint="" Eh="" pH="" Molality="" Ionic_str="" Osmot_coef="" Mag_moment="" Curie_T="" >
+        <bonds no="#P2" name="Reactant:" bond_fract="mole" />
+        <bonds no="TK" name="Pbar" bond_fract="1" />
+    </solution>
+
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+    <result id="" n="" g="" a="" X="" W="" Hpar="" Spar="" Gpar="" Hparxs="" Sparxs="" Gparxs="" Cppar="" />
+
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+    <result id="" n="" g="" a="" H="" S="" G="" Cp="" V=""  />
+</page>
+</file>

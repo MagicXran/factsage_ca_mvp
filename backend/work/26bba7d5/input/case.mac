@@ -1,0 +1,18 @@
+VARIABLE %EquiFile %OutDir %Temp %PressAtm
+HIDE
+HIDE_MACRO
+%EquiFile = "D:\Nercar\Wuhu\Apps\factsage_app\factsage_ca_mvp\backend\work\26bba7d5\input\case.equi"
+%OutDir   = "D:\Nercar\Wuhu\Apps\factsage_app\factsage_ca_mvp\backend\work\26bba7d5\out\"
+%Temp     = 1600.0
+%PressAtm = 1.0
+
+OPEN %EquiFile
+SET FINAL T %Temp
+SET FINAL P %PressAtm
+
+CALC
+
+SAVE %OutDircase.xml
+SAVE %OutDircase.res
+
+END

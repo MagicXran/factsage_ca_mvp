@@ -1,0 +1,18 @@
+VARIABLE %EquiFile %OutDir %Temp %PressAtm
+HIDE
+HIDE_MACRO
+%EquiFile = "{{ equi_file }}"
+%OutDir   = "{{ out_dir }}"
+%Temp     = {{ T_C }}
+%PressAtm = {{ P_atm }}
+
+OPEN %EquiFile
+SET FINAL T %Temp
+SET FINAL P %PressAtm
+
+CALC
+
+SAVE %OutDir{{ prefix }}.xml
+SAVE %OutDir{{ prefix }}.res
+
+END

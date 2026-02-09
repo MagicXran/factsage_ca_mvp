@@ -1,0 +1,260 @@
+/* ── 变量 ────────────────────────────────────────── */
+:root {
+    --primary: #1565c0;
+    --primary-dark: #0d47a1;
+    --primary-light: #e3f2fd;
+    --accent: #ff6f00;
+    --bg: #f0f2f5;
+    --card: #ffffff;
+    --text: #263238;
+    --text-secondary: #607d8b;
+    --border: #cfd8dc;
+    --success: #2e7d32;
+    --error: #c62828;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+/* ── 基础 ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* ── 头部 ────────────────────────────────────────── */
+.header {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header h1 { margin: 0; font-size: 1.4rem; font-weight: 600; }
+.tag {
+    font-size: .75rem;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+.tag-mock { background: var(--accent); color: #fff; }
+.tag-prod { background: var(--success); color: #fff; }
+
+/* ── 标签页 ──────────────────────────────────────── */
+.calc-tabs {
+    display: flex;
+    gap: 0;
+    padding: 0 24px;
+    background: var(--card);
+    border-bottom: 2px solid var(--border);
+}
+.tab {
+    padding: 12px 28px;
+    border: none;
+    background: transparent;
+    font-size: .95rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all .2s;
+}
+.tab:hover { color: var(--primary); }
+.tab.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+    font-weight: 600;
+}
+
+/* ── 主区域 ──────────────────────────────────────── */
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ── 卡片 ────────────────────────────────────────── */
+.card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px 24px;
+}
+.card h2 {
+    margin: 0 0 16px;
+    font-size: 1.1rem;
+    color: var(--primary-dark);
+    border-left: 4px solid var(--primary);
+    padding-left: 10px;
+}
+
+/* ── 表单 ────────────────────────────────────────── */
+fieldset {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-bottom: 14px;
+}
+legend {
+    font-weight: 600;
+    font-size: .9rem;
+    color: var(--primary-dark);
+    padding: 0 6px;
+}
+.field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+}
+label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .88rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+input, select {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: .88rem;
+    outline: none;
+    transition: border-color .2s;
+    min-width: 0;
+}
+input:focus, select:focus { border-color: var(--primary); }
+
+/* ── 按钮 ────────────────────────────────────────── */
+.btn-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+.btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: .92rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+}
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-primary:disabled { background: #90a4ae; cursor: not-allowed; }
+.btn-secondary { background: #eceff1; color: var(--text); }
+.btn-secondary:hover { background: #cfd8dc; }
+
+/* ── 结果面板 ────────────────────────────────────── */
+.placeholder {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 40px 0;
+    font-size: .95rem;
+}
+.placeholder.error { color: var(--error); }
+.hidden { display: none !important; }
+
+.result-highlight {
+    background: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    padding: 16px 20px;
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+.result-highlight .label { font-size: .9rem; color: var(--text-secondary); }
+.result-highlight .value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+.result-highlight .unit { font-size: .9rem; color: var(--text-secondary); }
+
+.result-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.result-block h3 {
+    font-size: .92rem;
+    margin: 0 0 8px;
+    color: var(--text);
+}
+.result-block table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+}
+.result-block th {
+    text-align: left;
+    padding: 6px 8px;
+    background: #f5f5f5;
+    border-bottom: 2px solid var(--border);
+    color: var(--text-secondary);
+}
+.result-block td {
+    padding: 5px 8px;
+    border-bottom: 1px solid #eee;
+}
+
+/* ── 加载动画 ────────────────────────────────────── */
+.spinner {
+    width: 36px; height: 36px;
+    border: 4px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin: 0 auto 12px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── 历史记录 ────────────────────────────────────── */
+.history-panel {
+    margin: 0 24px 24px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+#historyTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .85rem;
+}
+#historyTable th {
+    text-align: left;
+    padding: 8px;
+    background: #f5f5f5;
+    border-bottom: 2px solid var(--border);
+    color: var(--text-secondary);
+}
+#historyTable td {
+    padding: 7px 8px;
+    border-bottom: 1px solid #eee;
+}
+.status-completed { color: var(--success); font-weight: 600; }
+.status-failed    { color: var(--error);   font-weight: 600; }
+.status-running   { color: var(--accent);  font-weight: 600; }
+.status-pending   { color: var(--text-secondary); }
+
+/* ── 响应式 ──────────────────────────────────────── */
+@media (max-width: 900px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .result-columns { grid-template-columns: 1fr; }
+    .field-grid { grid-template-columns: 1fr; }
+}

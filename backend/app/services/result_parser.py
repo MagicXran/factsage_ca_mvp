@@ -18,9 +18,16 @@ def parse_result_xml(xml_path: Path) -> CalculationResult:
     if header is None or page is None:
         raise ValueError("XML 结构异常：缺少 <header> 或 <page>")
 
-    alpha = float(page.attrib.get("alpha", "nan"))
-    T = float(page.attrib.get("T", "nan"))
-    P = float(page.attrib.get("P", "nan"))
+    alpha = float(page.attrib.get("alpha", "nan") or "nan")
+    T = float(page.attrib.get("T", "nan") or "nan")
+    P = float(page.attrib.get("P", "nan") or "nan")
+
+    # 检测 FactSage 是否产出了有效计算结果
+    if T == 0.0 and P == 0.0 and alpha == 0.0:
+        raise ValueError(
+            "FactSage 计算未产出有效结果（alpha/T/P 全为 0），"
+            "请检查 .equi 输入文件格式是否正确"
+        )
 
     spec_def = header.find("species_definition")
     if spec_def is None:
@@ -53,6 +60,15 @@ def parse_result_xml(xml_path: Path) -> CalculationResult:
     )
     if steel_pid is None:
         raise ValueError("找不到钢液相 (Fe-liq)")
+
+    # 检查是否有有效的 result 数据
+    results = page.findall("result")
+    valid_results = [r for r in results if r.attrib.get("id", "")]
+    if not valid_results:
+        raise ValueError(
+            "FactSage 结果 XML 中无有效物种数据（所有 result id 为空），"
+            "计算可能未收敛或输入参数异常"
+        )
 
     # 收集各相质量
     phase_total_g: dict[str, float] = {}

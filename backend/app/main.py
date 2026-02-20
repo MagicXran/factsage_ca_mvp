@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info(
-        "启动 FactSage Ca 用量估算服务  mock=%s", settings.mock_mode
+        "启动 FactSage 钢渣反应计算服务  mock=%s", settings.mock_mode
     )
     await job_manager.start()
     yield
@@ -34,9 +34,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="FactSage Ca 用量估算",
-    description="钢渣反应脱氧/脱硫 Ca 加入量计算 API",
-    version="1.0.0",
+    title="FactSage 钢渣反应计算",
+    description="钢渣反应脱氧/脱硫 添加剂用量估算 API",
+    version="2.0.0",
     lifespan=lifespan,
 )
 

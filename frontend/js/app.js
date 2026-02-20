@@ -1,5 +1,5 @@
 /**
- * FactSage Ca 用量估算 - 前端逻辑
+ * FactSage 钢渣反应计算 - 前端逻辑
  */
 (function () {
     "use strict";
@@ -21,6 +21,9 @@
     const resultError = $("#resultError");
     const errorMsg = $("#errorMsg");
     const resAlpha = $("#resAlpha");
+    const resAlphaLabel = $("#resAlphaLabel");
+    const comboWarning = $("#comboWarning");
+    const btnDownload = $("#btnDownload");
 
     const steelTbody = $("#steelTable tbody");
     const slagTbody = $("#slagTable tbody");
@@ -29,12 +32,17 @@
 
     // 当前选中的计算类型
     let currentType = "deoxidation";
+    // 当前完成的任务 ID（用于下载）
+    let currentJobId = null;
 
-    // 预设名称映射（从 API 动态获取）
+    // 预设名称映射
     const TYPE_TO_PRESET = {
-        deoxidation: "example_deoxidation",
-        desulfurization: "example_desulfurization",
+        deoxidation: "deox_Al_target",
+        desulfurization: "desul_S_target",
     };
+
+    // 计算选项缓存（启动时一次性加载）
+    let calcOptions = null;
 
     // ── 初始化 ────────────────────────────────────────
 
@@ -51,6 +59,9 @@
             }
         } catch (_) { /* ignore */ }
 
+        // 加载计算选项配置（替代原 loadWhitelist）
+        await loadCalcOptions();
+
         // 绑定事件
         tabs.forEach((tab) =>
             tab.addEventListener("click", () => switchTab(tab.dataset.type))
@@ -58,23 +69,141 @@
         btnPreset.addEventListener("click", loadPreset);
         btnCalc.addEventListener("click", submitCalc);
 
-        // 目标元素下拉联动
+        // 目标元素变更 → 更新求解物质下拉 + 单位 + 默认值
         $("#target_element").addEventListener("change", function () {
-            currentType = this.value === "Al" ? "deoxidation" : "desulfurization";
+            const elem = this.value;
+            populateSpecies(elem);
+            updateUnitDisplay(elem);
+            setVal("target_value", getTargetDefault(elem));
+            currentType = elem === "S" ? "desulfurization" : "deoxidation";
             highlightTab(currentType);
+            checkCombination();
         });
+
+        // 求解物质变更 → 检查组合警告
+        $("#solve_species").addEventListener("change", checkCombination);
 
         // 加载默认预设
         await loadPreset();
     }
 
-    // ── Tab 切换 ──────────────────────────────────────
+    // ── 计算选项加载 ──────────────────────────────────────
+
+    async function loadCalcOptions() {
+        try {
+            calcOptions = await api("GET", "/calc-options");
+        } catch (e) {
+            console.warn("计算选项加载失败:", e);
+        }
+    }
+
+    /** 根据计算类型填充目标元素下拉 */
+    function populateTargets(calcType) {
+        if (!calcOptions) return;
+        const targets = calcOptions.calc_types[calcType] || [];
+        const sel = $("#target_element");
+        sel.innerHTML = "";
+        for (const t of targets) {
+            const opt = document.createElement("option");
+            opt.value = t.element;
+            opt.textContent = t.label;
+            sel.appendChild(opt);
+        }
+    }
+
+    /** 根据目标元素填充求解物质下拉（推荐在前 + 可用在后） */
+    function populateSpecies(targetElem) {
+        if (!calcOptions) return;
+        const info = calcOptions.species_by_target[targetElem];
+        if (!info) return;
+        const sel = $("#solve_species");
+        sel.innerHTML = "";
+        for (const sp of info.recommended) {
+            const opt = document.createElement("option");
+            opt.value = sp;
+            opt.textContent = sp + " (推荐)";
+            sel.appendChild(opt);
+        }
+        for (const sp of info.allowed) {
+            const opt = document.createElement("option");
+            opt.value = sp;
+            opt.textContent = sp;
+            sel.appendChild(opt);
+        }
+    }
+
+    /** 更新单位显示 */
+    function updateUnitDisplay(targetElem) {
+        const t = _findTargetInfo(targetElem);
+        if (t) {
+            $("#target_unit_display").textContent = t.unit === "ppm" ? "ppm" : "wt%";
+        }
+    }
+
+    /** 获取目标元素的固定单位 */
+    function getTargetUnit(targetElem) {
+        const t = _findTargetInfo(targetElem);
+        return t ? t.unit : "wtpct";
+    }
+
+    /** 获取目标元素的默认值 */
+    function getTargetDefault(targetElem) {
+        const t = _findTargetInfo(targetElem);
+        return t ? t.default_value : 0;
+    }
+
+    /** 从缓存中查找目标元素信息 */
+    function _findTargetInfo(elem) {
+        if (!calcOptions) return null;
+        for (const targets of Object.values(calcOptions.calc_types)) {
+            const found = targets.find((x) => x.element === elem);
+            if (found) return found;
+        }
+        return null;
+    }
+
+    // ── 组合验证 ─────────────────────────────────────────
+
+    let comboBlocked = false;
+
+    async function checkCombination() {
+        const sp = getStr("solve_species");
+        const te = getStr("target_element");
+        if (!sp || !te) return;
+        try {
+            const r = await api(
+                "GET",
+                `/validate-combination?solve_species=${encodeURIComponent(sp)}&target_elem=${encodeURIComponent(te)}`
+            );
+            if (r.level === "reject") {
+                comboWarning.textContent = "⛔ " + r.message;
+                comboWarning.className = "combo-warning combo-reject";
+                comboBlocked = true;
+                btnCalc.disabled = true;
+            } else if (r.level === "warn") {
+                comboWarning.textContent = "⚠️ " + r.message;
+                comboWarning.className = "combo-warning combo-warn";
+                comboBlocked = false;
+                btnCalc.disabled = false;
+            } else {
+                comboWarning.textContent = "";
+                comboWarning.className = "combo-warning hidden";
+                comboBlocked = false;
+                btnCalc.disabled = false;
+            }
+        } catch (_) {
+            comboWarning.className = "combo-warning hidden";
+            comboBlocked = false;
+            btnCalc.disabled = false;
+        }
+    }
+
+    // ── Tab 切换 ──────────────────────────────────────────
 
     async function switchTab(type) {
         currentType = type;
         highlightTab(type);
-        // 同步目标元素下拉
-        $("#target_element").value = type === "deoxidation" ? "Al" : "S";
+        populateTargets(type);
         await loadPreset();
     }
 
@@ -102,7 +231,18 @@
         const g = data.slag || {};
         const c = data.conditions || {};
         const t = data.target || {};
+        const calcType = data.calc_type || "deoxidation";
+        const elem = t.element || "Al";
 
+        // 1. 先填充下拉框（保证后续 setVal 能选中正确选项）
+        currentType = calcType;
+        highlightTab(calcType);
+        populateTargets(calcType);
+        setVal("target_element", elem);
+        populateSpecies(elem);
+        updateUnitDisplay(elem);
+
+        // 2. 填充表单值
         setVal("Fe_g", s.Fe_g);
         setVal("Mn_field", s.Mn_field ?? "");
         setVal("Si_g", s.Si_g);
@@ -114,13 +254,10 @@
         setVal("SiO2_g", g.SiO2_g);
         setVal("T_C", c.T_C);
         setVal("P_atm", c.P_atm ?? 1);
-        setVal("target_element", t.element || "Al");
+        setVal("solve_species", data.solve_species || "Ca");
         setVal("target_value", t.value);
         setVal("alpha_guess", data.alpha_guess ?? 0.5);
-
-        // 同步 tab
-        currentType = t.element === "S" ? "desulfurization" : "deoxidation";
-        highlightTab(currentType);
+        setVal("alpha_max", data.alpha_max ?? 10);
     }
 
     function setVal(id, val) {
@@ -161,13 +298,20 @@
             target: {
                 element: getStr("target_element"),
                 value: getNum("target_value"),
+                unit: getTargetUnit(getStr("target_element")),
             },
+            solve_species: getStr("solve_species") || "Ca",
             alpha_guess: getNum("alpha_guess") || 0.5,
+            alpha_max: getNum("alpha_max") || 10,
         };
 
         // 基本校验
         if (!body.steel.Fe_g || !body.target.value) {
             showError("请填写完整参数（至少 Fe 和目标值）");
+            return;
+        }
+        if (comboBlocked) {
+            showError("当前求解物质+目标元素组合不可用，请先调整");
             return;
         }
 
@@ -193,7 +337,8 @@
         while (true) {
             const job = await api("GET", `/jobs/${jobId}`);
             if (job.status === "completed") {
-                showResult(job.result);
+                currentJobId = jobId;
+                showResult(job.result, jobId);
                 refreshHistory();
                 return;
             }
@@ -213,6 +358,7 @@
         resultContent.classList.add("hidden");
         resultError.classList.add("hidden");
         resultLoading.classList.remove("hidden");
+        btnDownload.classList.add("hidden");
     }
 
     function showError(msg) {
@@ -221,15 +367,25 @@
         resultLoading.classList.add("hidden");
         resultError.classList.remove("hidden");
         errorMsg.textContent = msg;
+        btnDownload.classList.add("hidden");
     }
 
-    function showResult(r) {
+    function showResult(r, jobId) {
         resultPlaceholder.classList.add("hidden");
         resultLoading.classList.add("hidden");
         resultError.classList.add("hidden");
         resultContent.classList.remove("hidden");
 
-        resAlpha.textContent = r.alpha_Ca_g.toFixed(4);
+        // 显示下载按钮
+        if (jobId) {
+            btnDownload.classList.remove("hidden");
+            btnDownload.onclick = () => window.open(`${API_BASE}/jobs/${jobId}/download`);
+        } else {
+            btnDownload.classList.add("hidden");
+        }
+
+        resAlphaLabel.textContent = (r.solve_species || "Ca") + " 需要量";
+        resAlpha.textContent = r.alpha_g.toFixed(4);
 
         // 钢液表
         const steelRows = [
@@ -283,12 +439,15 @@
             // 获取完成任务的详细结果
             const rows = await Promise.all(
                 jobs.slice(0, 20).map(async (j) => {
+                    let species = "—";
                     let alpha = "—";
                     if (j.status === "completed") {
                         try {
                             const detail = await api("GET", `/jobs/${j.job_id}`);
-                            if (detail.result)
-                                alpha = detail.result.alpha_Ca_g.toFixed(4);
+                            if (detail.result) {
+                                species = detail.result.solve_species || "Ca";
+                                alpha = detail.result.alpha_g.toFixed(4);
+                            }
                         } catch (_) { /* ignore */ }
                     }
                     const typeLabel =
@@ -302,6 +461,7 @@
                     return `<tr>
                         <td>${j.job_id}</td>
                         <td>${typeLabel}</td>
+                        <td>${species}</td>
                         <td>${alpha}</td>
                         <td class="status-${j.status}">${statusLabel}</td>
                         <td>${j.created_at}</td>

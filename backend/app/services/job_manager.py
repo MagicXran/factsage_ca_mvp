@@ -90,7 +90,7 @@ class JobManager:
                 )
                 job["result"] = result
                 job["status"] = JobStatus.completed
-                logger.info("任务 %s 完成, alpha_Ca=%.4f g", job_id, result.alpha_Ca_g)
+                logger.info("任务 %s 完成, %s=%.4f g", job_id, result.solve_species, result.alpha_g)
             except Exception as exc:
                 job["error"] = str(exc)
                 job["status"] = JobStatus.failed

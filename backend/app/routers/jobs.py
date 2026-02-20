@@ -2,11 +2,14 @@
 """API 路由：任务提交 / 查询 / 预设"""
 from __future__ import annotations
 
+import io
 import json
 import logging
+import zipfile
 from typing import List
 
 from fastapi import APIRouter, HTTPException
+from fastapi.responses import StreamingResponse
 
 from ..config import settings
 from ..models import (
@@ -50,9 +53,27 @@ def _load_presets() -> dict:
 # ── 接口 ─────────────────────────────────────────────────
 
 
+@router.get("/validate-combination")
+async def validate_combination_api(
+    solve_species: str, target_elem: str
+):
+    """验证 solve_species + target_elem 组合是否可行"""
+    from ..services.template_renderer import validate_combination
+    level, message = validate_combination(solve_species, target_elem)
+    return {"level": level, "message": message}
+
+
 @router.post("/calculate")
 async def calculate(request: JobRequest) -> JobResponse:
     """提交一次计算任务"""
+    # 组合预检
+    from ..services.template_renderer import validate_combination
+    level, msg = validate_combination(
+        request.solve_species, request.target.element
+    )
+    if level == "reject":
+        raise HTTPException(status_code=400, detail=msg)
+
     job_id = await job_manager.submit(request)
     job = job_manager.get(job_id)
     return JobResponse(
@@ -76,6 +97,36 @@ async def get_job(job_id: str) -> JobResponse:
         created_at=job["created_at"],
         result=job["result"],
         error=job["error"],
+    )
+
+
+@router.get("/jobs/{job_id}/download")
+async def download_result(job_id: str):
+    """下载计算结果文件（result.xml + result.res 的 zip 包）"""
+    out_dir = settings.work_root / job_id / "out"
+    if not out_dir.exists():
+        raise HTTPException(status_code=404, detail="任务输出目录不存在")
+
+    files_to_zip = []
+    for name in ("result.xml", "result.res"):
+        p = out_dir / name
+        if p.exists():
+            files_to_zip.append(p)
+    if not files_to_zip:
+        raise HTTPException(status_code=404, detail="结果文件不存在")
+
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        for p in files_to_zip:
+            zf.write(p, p.name)
+    buf.seek(0)
+
+    return StreamingResponse(
+        buf,
+        media_type="application/zip",
+        headers={
+            "Content-Disposition": f'attachment; filename="{job_id}_result.zip"'
+        },
     )
 
 
@@ -106,6 +157,20 @@ async def get_preset(name: str):
     if name not in presets:
         raise HTTPException(status_code=404, detail=f"预设 '{name}' 不存在")
     return presets[name]
+
+
+@router.get("/whitelist")
+async def get_whitelist():
+    """返回可选求解物质白名单"""
+    from ..services.template_renderer import get_whitelist as _get_wl
+    return _get_wl()
+
+
+@router.get("/calc-options")
+async def calc_options():
+    """返回计算类型→目标元素→求解物质的完整选项配置"""
+    from ..services.template_renderer import get_calc_options
+    return get_calc_options()
 
 
 @router.get("/config/info")

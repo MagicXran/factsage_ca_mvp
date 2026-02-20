@@ -8,7 +8,24 @@ from pathlib import Path
 from ..models import CalculationResult, SlagResult, SteelResult
 
 
-def parse_result_xml(xml_path: Path) -> CalculationResult:
+class NoSolutionError(Exception):
+    """FactSage 未找到解（ESTA 区间内无解）时抛出"""
+
+
+def _check_no_solution(xml_path: Path) -> bool:
+    """检查同目录下的 .out 文本文件，搜索 'no solution' 或 'Target calculation aborted'"""
+    out_dir = xml_path.parent
+    for out_file in out_dir.glob("*.out"):
+        try:
+            content = out_file.read_text(encoding="utf-8", errors="ignore").lower()
+            if "no solution found" in content or "target calculation aborted" in content:
+                return True
+        except OSError:
+            continue
+    return False
+
+
+def parse_result_xml(xml_path: Path, solve_species: str = "Ca") -> CalculationResult:
     """解析 Equilib XML 并返回结构化结果"""
     tree = ET.parse(xml_path)
     root = tree.getroot()
@@ -21,6 +38,12 @@ def parse_result_xml(xml_path: Path) -> CalculationResult:
     alpha = float(page.attrib.get("alpha", "nan") or "nan")
     T = float(page.attrib.get("T", "nan") or "nan")
     P = float(page.attrib.get("P", "nan") or "nan")
+
+    # 检测 "no solution" — alpha=0 且 T/P 正常，或 .out 文件中有关键词
+    if (alpha == 0.0 and T > 0 and P > 0) or _check_no_solution(xml_path):
+        raise NoSolutionError(
+            "FactSage 在 ESTA 搜索区间内未找到解（no solution found within interval）"
+        )
 
     # 检测 FactSage 是否产出了有效计算结果
     if T == 0.0 and P == 0.0 and alpha == 0.0:
@@ -117,7 +140,8 @@ def parse_result_xml(xml_path: Path) -> CalculationResult:
     )
 
     return CalculationResult(
-        alpha_Ca_g=round(alpha, 4), T_K=T, P_atm=P, steel=steel, slag=slag
+        alpha_g=round(alpha, 4), solve_species=solve_species,
+        T_K=T, P_atm=P, steel=steel, slag=slag
     )
 
 

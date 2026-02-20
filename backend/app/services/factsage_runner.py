@@ -1,15 +1,21 @@
 # -*- coding: utf-8 -*-
-"""FactSage 执行服务：真实调用 EquiSage.exe / mock 模拟"""
+"""FactSage 执行服务：真实调用 EquiSage.exe / mock 模拟，带自动重试"""
 from __future__ import annotations
 
 import asyncio
+import logging
 import subprocess
 import sys
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 from ..config import settings
 from ..models import CalculationResult, JobRequest, SlagResult, SteelResult
+
+logger = logging.getLogger(__name__)
+
+# 重试默认梯度（会与用户 alpha_max 去重合并）
+_RETRY_STEPS = [1, 10, 100]
 
 
 async def run_calculation(
@@ -21,7 +27,7 @@ async def run_calculation(
     return await _real_calculation(request, paths)
 
 
-# ── 真实执行 ──────────────────────────────────────────────
+# ── 真实执行 ────────────────────────────────────────────
 
 
 def _run_factsage_blocking(mac_path: Path) -> int:
@@ -44,21 +50,69 @@ def _run_factsage_blocking(mac_path: Path) -> int:
     return p.wait(timeout=settings.factsage_timeout)
 
 
+def _build_retry_steps(user_max: float) -> List[float]:
+    """构建去重排序的重试梯度"""
+    steps = sorted(set(_RETRY_STEPS + [user_max]))
+    return [s for s in steps if s > 0]
+
+
+def _build_diagnostic(request: JobRequest, tried_limits: List[float]) -> str:
+    """构建用户可读的诊断消息"""
+    from .template_renderer import COMBINATION_MATRIX
+
+    species = request.solve_species
+    target = request.target.element
+    matrix = COMBINATION_MATRIX.get(target, {})
+    rec = matrix.get("recommended", [])
+
+    lines = [
+        f"FactSage 在所有尝试的 ESTA 区间内均未找到解。",
+        f"当前组合: 求解物质={species}, 目标元素={target}",
+        f"已尝试的 A_MAX 梯度: {tried_limits}",
+        "",
+        "建议:",
+    ]
+    if rec and species not in rec:
+        lines.append(f"  1. 将求解物质改为: {', '.join(rec)}")
+    lines.append(f"  {'2' if rec and species not in rec else '1'}. 放宽目标值（当前 {request.target.value} {request.target.unit}）")
+    lines.append(f"  {'3' if rec and species not in rec else '2'}. 增大 alpha_max（当前 {request.alpha_max}）")
+    return "\n".join(lines)
+
+
 async def _real_calculation(
     request: JobRequest, paths: Dict[str, Any]
 ) -> CalculationResult:
+    from .result_parser import NoSolutionError, parse_result_xml
+    from .template_renderer import re_render_equi_alpha_max
+
     loop = asyncio.get_event_loop()
-    rc = await loop.run_in_executor(None, _run_factsage_blocking, paths["mac_path"])
-    if rc != 0:
-        raise RuntimeError(f"FactSage 退出码: {rc}")
+    retry_steps = _build_retry_steps(request.alpha_max)
+    tried: List[float] = []
 
-    xml_path: Path = paths["out_dir"] / f"{paths['prefix']}.xml"
-    if not xml_path.exists():
-        raise FileNotFoundError(f"FactSage 输出未找到: {xml_path}")
+    for a_max in retry_steps:
+        # 更新 equi 文件中的 A_MAX
+        re_render_equi_alpha_max(paths["equi_path"], a_max)
+        tried.append(a_max)
 
-    from .result_parser import parse_result_xml
+        logger.info("尝试 A_MAX=%.1f ...", a_max)
+        rc = await loop.run_in_executor(
+            None, _run_factsage_blocking, paths["mac_path"]
+        )
+        if rc != 0:
+            raise RuntimeError(f"FactSage 退出码: {rc}")
 
-    return parse_result_xml(xml_path)
+        xml_path: Path = paths["out_dir"] / "result.xml"
+        if not xml_path.exists():
+            raise FileNotFoundError(f"FactSage 输出未找到: {xml_path}")
+
+        try:
+            return parse_result_xml(xml_path, solve_species=request.solve_species)
+        except NoSolutionError:
+            logger.warning("A_MAX=%.1f 无解，继续重试...", a_max)
+            continue
+
+    # 所有梯度都失败 → 诊断
+    raise RuntimeError(_build_diagnostic(request, tried))
 
 
 # ── Mock 模拟 ─────────────────────────────────────────────
@@ -89,7 +143,8 @@ def _mock_deoxidation(
     alpha = round(req.steel.O_g * 62.5 + 0.002, 4)
     o_ppm = round(max(1, req.steel.O_g * 1e4 * 0.28), 1)
     return CalculationResult(
-        alpha_Ca_g=alpha,
+        alpha_g=alpha,
+        solve_species=req.solve_species,
         T_K=T_K,
         P_atm=req.conditions.P_atm,
         steel=SteelResult(
@@ -120,7 +175,8 @@ def _mock_desulfurization(
     alpha = round(req.steel.S_g * 35 + 0.005, 4)
     o_ppm = round(max(3, req.steel.O_g * 1e4 * 0.73), 1)
     return CalculationResult(
-        alpha_Ca_g=alpha,
+        alpha_g=alpha,
+        solve_species=req.solve_species,
         T_K=T_K,
         P_atm=req.conditions.P_atm,
         steel=SteelResult(

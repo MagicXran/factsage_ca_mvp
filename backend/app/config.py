@@ -27,8 +27,8 @@ _DEFAULT_CONFIG: Dict[str, Any] = {
     },
     "paths": {
         "work_root": "./work",
-        "templates_dir": "templates" if _IS_FROZEN else "../cites/templates",
-        "presets_dir": "presets" if _IS_FROZEN else "../cites/jobs",
+        "templates_dir": "templates" if _IS_FROZEN else "./templates",
+        "presets_dir": "presets" if _IS_FROZEN else "./presets",
         "frontend_dir": "frontend" if _IS_FROZEN else "../frontend",
     },
     "mock": {"enabled": "auto", "delay_seconds": 1.5},

@@ -1,0 +1,50 @@
+{
+  "Ca": {
+    "category": "脱氧剂 / 夹杂物改性 / 脱硫剂",
+    "default_state_token": "(25,1,s1-FactPS,#1)"
+  },
+  "CaO": {
+    "category": "脱硫剂 / 造渣剂",
+    "default_state_token": "(25,1,s-FactPS,#1)"
+  },
+  "Al": {
+    "category": "脱氧剂",
+    "default_state_token": "(25,1,s-FactPS,#1)"
+  },
+  "Si": {
+    "category": "脱氧剂",
+    "default_state_token": "(25,1,s-FactPS,#1)"
+  },
+  "Mn": {
+    "category": "脱氧剂 / 合金化",
+    "default_state_token": "(25,1,s1-FactPS,#1)"
+  },
+  "Mg": {
+    "category": "脱氧剂 / 脱硫剂",
+    "default_state_token": "(25,1,s1-FactPS,#1)"
+  },
+  "Ti": {
+    "category": "脱氧剂 / 夹杂物形成",
+    "default_state_token": "(25,1,s1-FactPS,#1)"
+  },
+  "MgO": {
+    "category": "造渣剂",
+    "default_state_token": "(25,1,s-FactPS,#1)"
+  },
+  "Al2O3": {
+    "category": "造渣剂",
+    "default_state_token": "(25,1,s-FactPS,#1)"
+  },
+  "SiO2": {
+    "category": "造渣剂",
+    "default_state_token": "(25,1,s-FactPS,#1)"
+  },
+  "CaF2": {
+    "category": "助熔剂",
+    "default_state_token": "(25,1,s-FactPS,#1)"
+  },
+  "CaC2": {
+    "category": "脱硫剂（碳化物）",
+    "default_state_token": "(25,1,s-FactPS,#1)"
+  }
+}

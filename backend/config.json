@@ -10,11 +10,11 @@
     },
     "paths": {
         "work_root": "./work",
-        "templates_dir": "../cites/templates",
-        "presets_dir": "../cites/jobs"
+        "templates_dir": "./templates",
+        "presets_dir": "./presets"
     },
     "mock": {
-        "enabled": "false",
+        "enabled": "auto",
         "delay_seconds": 1.5
     }
 }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * FactSage 钢渣反应计算 - 前端逻辑
  */
 (function () {
@@ -85,6 +85,13 @@
 
         // 加载默认预设
         await loadPreset();
+
+        // 检查 URL 参数，加载历史任务
+        const params = new URLSearchParams(window.location.search);
+        const viewJobId = params.get("job_id");
+        if (viewJobId) {
+            await loadHistoryJob(viewJobId);
+        }
     }
 
     // ── 计算选项加载 ──────────────────────────────────────
@@ -351,6 +358,68 @@
         }
     }
 
+    // ── 历史任务加载 ──────────────────────────────────────
+
+    async function loadHistoryJob(jobId) {
+        showLoading();
+        try {
+            const job = await api("GET", `/jobs/${jobId}`);
+            if (!job) {
+                showError("任务不存在: " + jobId);
+                return;
+            }
+
+            // 填充输入参数（如果有 request 数据）
+            if (job.request) {
+                fillForm({
+                    calc_type: job.calc_type,
+                    steel: job.request.steel,
+                    slag: job.request.slag,
+                    conditions: job.request.conditions,
+                    target: job.request.target,
+                    solve_species: job.request.solve_species,
+                    alpha_guess: job.request.alpha_guess,
+                    alpha_max: job.request.alpha_max,
+                });
+                enterHistoryMode(jobId);
+            }
+
+            // 展示结果
+            if (job.status === "completed" && job.result) {
+                currentJobId = jobId;
+                showResult(job.result, jobId);
+            } else if (job.status === "failed") {
+                showError(job.error || "计算失败");
+            } else {
+                showError("任务状态: " + job.status);
+            }
+
+            refreshHistory();
+        } catch (e) {
+            showError("加载历史任务失败: " + e.message);
+        }
+    }
+
+    /** 进入历史查看模式：输入面板加提示，表单只读 */
+    function enterHistoryMode(jobId) {
+        const panel = document.querySelector(".input-panel");
+        // 添加历史模式提示条
+        let banner = document.getElementById("historyBanner");
+        if (!banner) {
+            banner = document.createElement("div");
+            banner.id = "historyBanner";
+            banner.className = "history-banner";
+            panel.insertBefore(banner, panel.querySelector("h2").nextSibling);
+        }
+        banner.innerHTML = '\u{1F4CB} 正在查看历史任务 <code>' + jobId + '</code> <a href="/" class="btn-back">返回新建计算</a>';
+        banner.classList.remove("hidden");
+
+        // 禁用所有输入
+        panel.querySelectorAll("input, select").forEach(function(el) { el.disabled = true; });
+        btnCalc.classList.add("hidden");
+        btnPreset.classList.add("hidden");
+    }
+
     // ── 结果展示 ──────────────────────────────────────
 
     function showLoading() {
@@ -436,38 +505,23 @@
             }
             historyEmpty.classList.add("hidden");
 
-            // 获取完成任务的详细结果
-            const rows = await Promise.all(
-                jobs.slice(0, 20).map(async (j) => {
-                    let species = "—";
-                    let alpha = "—";
-                    if (j.status === "completed") {
-                        try {
-                            const detail = await api("GET", `/jobs/${j.job_id}`);
-                            if (detail.result) {
-                                species = detail.result.solve_species || "Ca";
-                                alpha = detail.result.alpha_g.toFixed(4);
-                            }
-                        } catch (_) { /* ignore */ }
-                    }
-                    const typeLabel =
-                        j.calc_type === "deoxidation" ? "脱氧" : "脱硫";
-                    const statusLabel = {
-                        pending: "等待中",
-                        running: "计算中",
-                        completed: "✓ 完成",
-                        failed: "✗ 失败",
-                    }[j.status] || j.status;
-                    return `<tr>
-                        <td>${j.job_id}</td>
-                        <td>${typeLabel}</td>
-                        <td>${species}</td>
-                        <td>${alpha}</td>
-                        <td class="status-${j.status}">${statusLabel}</td>
-                        <td>${j.created_at}</td>
-                    </tr>`;
-                })
-            );
+            const rows = jobs.slice(0, 50).map(function(j) {
+                const typeLabel = j.calc_type === "deoxidation" ? "脱氧" : "脱硫";
+                const statusLabel = {
+                    pending: "等待中",
+                    running: "计算中",
+                    completed: "✓ 完成",
+                    failed: "✗ 失败",
+                }[j.status] || j.status;
+                return '<tr>'
+                    + '<td><a href="?job_id=' + j.job_id + '" class="job-link">' + j.job_id + '</a></td>'
+                    + '<td>' + typeLabel + '</td>'
+                    + '<td>' + (j.solve_species || "Ca") + '</td>'
+                    + '<td>—</td>'
+                    + '<td class="status-' + j.status + '">' + statusLabel + '</td>'
+                    + '<td>' + j.created_at + '</td>'
+                    + '</tr>';
+            });
             historyTbody.innerHTML = rows.join("");
         } catch (_) { /* ignore */ }
     }

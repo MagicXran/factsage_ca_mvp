@@ -100,6 +100,7 @@ class JobResponse(BaseModel):
     status: JobStatus
     calc_type: Optional[CalcType] = None
     created_at: Optional[str] = None
+    request: Optional[JobRequest] = None
     result: Optional[CalculationResult] = None
     error: Optional[str] = None
 
@@ -109,3 +110,4 @@ class JobListItem(BaseModel):
     status: JobStatus
     calc_type: CalcType
     created_at: str
+    solve_species: str = "Ca"

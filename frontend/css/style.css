@@ -1,4 +1,4 @@
-/* ── 变量 ────────────────────────────────────────── */
+﻿/* ── 变量 ────────────────────────────────────────── */
 :root {
     --primary: #1565c0;
     --primary-dark: #0d47a1;
@@ -287,6 +287,44 @@ input:focus, select:focus { border-color: var(--primary); }
 .status-failed    { color: var(--error);   font-weight: 600; }
 .status-running   { color: var(--accent);  font-weight: 600; }
 .status-pending   { color: var(--text-secondary); }
+
+/* ── 历史查看模式 ────────────────────────────────── */
+.history-banner {
+    background: #fff3e0;
+    border: 1px solid #ffb74d;
+    border-radius: var(--radius);
+    padding: 10px 16px;
+    margin-bottom: 14px;
+    font-size: .88rem;
+    color: #e65100;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.history-banner code {
+    background: #ffe0b2;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.btn-back {
+    margin-left: auto;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .85rem;
+}
+.btn-back:hover { text-decoration: underline; }
+
+.job-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-family: monospace;
+}
+.job-link:hover {
+    text-decoration: underline;
+    color: var(--primary-dark);
+}
 
 /* ── 响应式 ──────────────────────────────────────── */
 @media (max-width: 900px) {

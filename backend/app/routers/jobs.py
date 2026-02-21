@@ -86,7 +86,7 @@ async def calculate(request: JobRequest) -> JobResponse:
 
 @router.get("/jobs/{job_id}")
 async def get_job(job_id: str) -> JobResponse:
-    """查询任务状态与结果"""
+    """查询任务状态与结果（含输入参数）"""
     job = job_manager.get(job_id)
     if not job:
         raise HTTPException(status_code=404, detail="任务不存在")
@@ -95,6 +95,7 @@ async def get_job(job_id: str) -> JobResponse:
         status=job["status"],
         calc_type=job["calc_type"],
         created_at=job["created_at"],
+        request=job["request"],
         result=job["result"],
         error=job["error"],
     )
@@ -139,6 +140,7 @@ async def list_jobs() -> List[JobListItem]:
             status=j["status"],
             calc_type=j["calc_type"],
             created_at=j["created_at"],
+            solve_species=j["request"].solve_species if j.get("request") else "Ca",
         )
         for j in job_manager.list_all()
     ]

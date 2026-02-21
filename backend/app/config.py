@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """应用配置 —— 从 config.json 加载，支持环境变量覆盖"""
 from __future__ import annotations
 
@@ -30,6 +30,7 @@ _DEFAULT_CONFIG: Dict[str, Any] = {
         "templates_dir": "templates" if _IS_FROZEN else "./templates",
         "presets_dir": "presets" if _IS_FROZEN else "./presets",
         "frontend_dir": "frontend" if _IS_FROZEN else "../frontend",
+        "db_path": "./data/factsage.db",
     },
     "mock": {"enabled": "auto", "delay_seconds": 1.5},
 }
@@ -103,6 +104,12 @@ class Settings:
     def frontend_dir(self) -> Path:
         return self._resolve(
             os.getenv("FRONTEND_DIR") or self._cfg["paths"]["frontend_dir"]
+        )
+
+    @property
+    def db_path(self) -> Path:
+        return self._resolve(
+            os.getenv("DB_PATH") or self._cfg["paths"]["db_path"]
         )
 
     # ── 服务器 ────────────────────────────────────────────

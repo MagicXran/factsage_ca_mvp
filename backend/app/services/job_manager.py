@@ -66,15 +66,38 @@ class JobManager:
         return job_id
 
     def get(self, job_id: str) -> Optional[Dict]:
-        """查询单个任务，返回包含反序列化对象的 dict"""
+        """查询单个任务；result.xml 存在时优先从 XML 解析，结果回写 DB"""
         row = self._db.get(job_id)
         if not row:
-            return None
-        return self._hydrate(row)
+            return self._recover_from_disk(job_id, request=None, created_at=None, calc_type=None)
+
+        job = self._hydrate(row)
+
+        if job["status"] != JobStatus.completed:
+            return job
+
+        # result.xml 优先策略：存在时解析并与 DB 比较，不同则更新
+        solve_species = job["request"].solve_species if job["request"] else "Ca"
+        xml_result = self._parse_result_from_disk(job_id, solve_species)
+        if xml_result is not None and xml_result != job["result"]:
+            self._db.update_result(
+                job_id, JobStatus.completed.value, xml_result.model_dump_json()
+            )
+            job["result"] = xml_result
+            logger.info("任务 %s 已从 result.xml 刷新结果", job_id)
+        return job
 
     def list_all(self, limit: int = 100) -> List[Dict]:
         """列出所有任务（按创建时间倒序）"""
-        return [self._hydrate(r) for r in self._db.list_all(limit=limit)]
+        jobs: List[Dict] = []
+        for row in self._db.list_all(limit=limit):
+            job = self._hydrate(row)
+            # 历史列表要求 calc_type 可识别；异常数据仅跳过，不阻断接口
+            if job["calc_type"] is None:
+                logger.warning("任务 %s 的 calc_type 无效，已跳过列表输出", job.get("job_id"))
+                continue
+            jobs.append(job)
+        return jobs
 
     # ── 内部方法 ─────────────────────────────────────────
 
@@ -83,16 +106,92 @@ class JobManager:
         """将 DB 行转换为业务 dict（反序列化 JSON 字段）"""
         result = None
         if row.get("result"):
-            result = CalculationResult.model_validate_json(row["result"])
-        request = JobRequest.model_validate_json(row["request"])
+            try:
+                result = CalculationResult.model_validate_json(row["result"])
+            except Exception as exc:
+                logger.warning("任务 %s 的 result 字段反序列化失败: %s", row.get("job_id"), exc)
+                result = None
+
+        request = None
+        if row.get("request"):
+            try:
+                request = JobRequest.model_validate_json(row["request"])
+            except Exception as exc:
+                logger.warning("任务 %s 的 request 字段反序列化失败: %s", row.get("job_id"), exc)
+                request = None
+
+        status = JobStatus.failed
+        if row.get("status"):
+            try:
+                status = JobStatus(row["status"])
+            except Exception as exc:
+                logger.warning("任务 %s 的 status 字段无效: %s", row.get("job_id"), exc)
+
+        calc_type = None
+        if row.get("calc_type"):
+            try:
+                calc_type = CalcType(row["calc_type"])
+            except Exception as exc:
+                logger.warning("任务 %s 的 calc_type 字段无效: %s", row.get("job_id"), exc)
+
         return {
             "job_id": row["job_id"],
-            "status": JobStatus(row["status"]),
-            "calc_type": CalcType(row["calc_type"]),
+            "status": status,
+            "calc_type": calc_type,
             "request": request,
             "created_at": row["created_at"],
             "result": result,
             "error": row.get("error"),
+        }
+
+    @staticmethod
+    def _parse_result_from_disk(
+        job_id: str, solve_species: str = "Ca"
+    ) -> Optional[CalculationResult]:
+        """从 work/<job_id>/out/result.xml 解析结果"""
+        from ..config import settings
+        from .result_parser import parse_result_xml
+
+        xml_path = settings.work_root / job_id / "out" / "result.xml"
+        if not xml_path.exists():
+            return None
+        try:
+            return parse_result_xml(xml_path, solve_species=solve_species or "Ca")
+        except Exception as exc:
+            logger.warning("任务 %s 从 XML 恢复失败: %s", job_id, exc)
+            return None
+
+    @classmethod
+    def _recover_from_disk(
+        cls,
+        job_id: str,
+        request: JobRequest | None,
+        created_at: str | None,
+        calc_type: CalcType | None,
+    ) -> Optional[Dict]:
+        """DB 无记录时，允许通过磁盘中的 result.xml 直接查看历史"""
+        from ..config import settings
+
+        solve_species = request.solve_species if request else "Ca"
+        result = cls._parse_result_from_disk(job_id, solve_species=solve_species)
+        if result is None:
+            return None
+
+        xml_path = settings.work_root / job_id / "out" / "result.xml"
+        recovered_created_at = created_at
+        if recovered_created_at is None:
+            recovered_created_at = datetime.fromtimestamp(
+                xml_path.stat().st_mtime
+            ).isoformat(timespec="seconds")
+
+        return {
+            "job_id": job_id,
+            "status": JobStatus.completed,
+            "calc_type": calc_type,
+            "request": request,
+            "created_at": recovered_created_at,
+            "result": result,
+            "error": None,
         }
 
     # ── 后台 worker ─────────────────────────────────────────

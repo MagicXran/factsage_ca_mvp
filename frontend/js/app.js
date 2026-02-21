@@ -88,7 +88,7 @@
 
         // 检查 URL 参数，加载历史任务
         const params = new URLSearchParams(window.location.search);
-        const viewJobId = params.get("job_id");
+        const viewJobId = params.get("job_id") || params.get("task_id");
         if (viewJobId) {
             await loadHistoryJob(viewJobId);
         }

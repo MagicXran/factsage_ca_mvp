@@ -45,7 +45,7 @@ class ConditionsInput(BaseModel):
 
 
 class TargetInput(BaseModel):
-    element: str = Field(..., description="目标元素 (Al / O / S)")
+    element: str = Field(..., description="目标元素 (Al / S)")
     value: float = Field(..., gt=0, description="目标含量值")
     unit: str = Field("wtpct", description="单位: ppm | wtpct")
 

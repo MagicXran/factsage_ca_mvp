@@ -20,11 +20,6 @@ COMBINATION_MATRIX: Dict[str, Dict[str, list]] = {
         "allowed": ["Mg"],
         "blocked": ["Al", "Al2O3", "Si", "SiO2", "Ti", "MgO", "CaO", "CaF2", "CaC2", "Mn"],
     },
-    "O": {
-        "recommended": ["Al", "Si", "Mg", "Ca", "Ti"],
-        "allowed": [],
-        "blocked": ["MgO", "Al2O3", "SiO2", "CaO", "CaF2", "CaC2", "Mn"],
-    },
     "S": {
         "recommended": ["CaC2", "Ca", "Mg"],
         "allowed": ["CaF2", "Al"],
@@ -43,7 +38,7 @@ def validate_combination(
     """
     matrix = COMBINATION_MATRIX.get(target_elem)
     if matrix is None:
-        return "reject", f"不支持的目标元素 '{target_elem}'，可选: Al, O, S"
+        return "reject", f"不支持的目标元素 '{target_elem}'，可选: {', '.join(COMBINATION_MATRIX.keys())}"
 
     if solve_species in matrix["recommended"]:
         return "ok", ""
@@ -69,8 +64,7 @@ def validate_combination(
 
 CALC_TYPE_TARGETS: Dict[str, list] = {
     "deoxidation": [
-        {"element": "Al", "unit": "wtpct", "label": "Al (脱氧PPT)", "default_value": 0.01},
-        {"element": "O",  "unit": "ppm",   "label": "O (脱氧直控)", "default_value": 10},
+        {"element": "Al", "unit": "wtpct", "label": "Al (脱氧)", "default_value": 0.01},
     ],
     "desulfurization": [
         {"element": "S",  "unit": "ppm",   "label": "S (脱硫)",     "default_value": 50},

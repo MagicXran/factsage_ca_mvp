@@ -119,6 +119,9 @@
     }
 
     /** 根据目标元素填充求解物质下拉（推荐在前 + 可用在后） */
+    // 前端隐藏的物质（不在下拉框中显示）
+    const HIDDEN_SPECIES = ["CaO", "Mn"];
+
     function populateSpecies(targetElem) {
         if (!calcOptions) return;
         const info = calcOptions.species_by_target[targetElem];
@@ -126,12 +129,14 @@
         const sel = $("#solve_species");
         sel.innerHTML = "";
         for (const sp of info.recommended) {
+            if (HIDDEN_SPECIES.includes(sp)) continue;
             const opt = document.createElement("option");
             opt.value = sp;
             opt.textContent = sp + " (推荐)";
             sel.appendChild(opt);
         }
         for (const sp of info.allowed) {
+            if (HIDDEN_SPECIES.includes(sp)) continue;
             const opt = document.createElement("option");
             opt.value = sp;
             opt.textContent = sp;

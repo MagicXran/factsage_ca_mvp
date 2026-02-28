@@ -17,18 +17,18 @@ from ..models import JobRequest
 COMBINATION_MATRIX: Dict[str, Dict[str, list]] = {
     "Al": {
         "recommended": ["Ca"],
-        "allowed": ["CaO", "Mg", "Mn"],
-        "blocked": ["Al", "Al2O3", "Si", "SiO2", "Ti", "MgO", "CaF2", "CaC2"],
+        "allowed": ["Mg"],
+        "blocked": ["Al", "Al2O3", "Si", "SiO2", "Ti", "MgO", "CaO", "CaF2", "CaC2", "Mn"],
     },
     "O": {
         "recommended": ["Al", "Si", "Mg", "Ca", "Ti"],
-        "allowed": ["CaO", "Mn"],
-        "blocked": ["MgO", "Al2O3", "SiO2", "CaF2", "CaC2"],
+        "allowed": [],
+        "blocked": ["MgO", "Al2O3", "SiO2", "CaO", "CaF2", "CaC2", "Mn"],
     },
     "S": {
-        "recommended": ["CaO", "CaC2", "Ca", "Mg"],
+        "recommended": ["CaC2", "Ca", "Mg"],
         "allowed": ["CaF2", "Al"],
-        "blocked": ["Si", "SiO2", "Mn", "Ti", "MgO", "Al2O3"],
+        "blocked": ["Si", "SiO2", "Mn", "Ti", "MgO", "Al2O3", "CaO"],
     },
 }
 
@@ -102,7 +102,8 @@ def _load_whitelist() -> Dict[str, Dict[str, str]]:
     """加载并缓存 materials_whitelist.json"""
     global _WHITELIST
     if _WHITELIST is None:
-        wl_path = Path(__file__).resolve().parent.parent.parent / "materials_whitelist.json"
+        from ..config import _BASE_DIR
+        wl_path = _BASE_DIR / "materials_whitelist.json"
         with open(wl_path, "r", encoding="utf-8") as f:
             _WHITELIST = json.load(f)
     return _WHITELIST

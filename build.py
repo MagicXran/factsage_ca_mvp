@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 """构建打包脚本 - 生成独立分发目录"""
 import json
 import shutil
@@ -36,21 +36,32 @@ def main():
     cfg["paths"]["presets_dir"] = "presets"
     cfg["paths"]["frontend_dir"] = "frontend"
     cfg["paths"]["work_root"] = "./work"
+    cfg["paths"]["db_path"] = "./data/factsage.db"
     cfg["server"]["host"] = "127.0.0.1"
+    cfg["mock"]["enabled"] = "auto"
     with open(DIST / "config.json", "w", encoding="utf-8") as f:
         json.dump(cfg, f, indent=4, ensure_ascii=False)
 
     # templates/
-    _copy_dir(ROOT / "cites" / "templates", DIST / "templates")
+    _copy_dir(ROOT / "backend" / "templates", DIST / "templates")
 
     # presets/
-    _copy_dir(ROOT / "cites" / "jobs", DIST / "presets")
+    _copy_dir(ROOT / "backend" / "presets", DIST / "presets")
 
     # frontend/
     _copy_dir(ROOT / "frontend", DIST / "frontend")
 
+    # materials_whitelist.json
+    shutil.copy2(
+        ROOT / "backend" / "materials_whitelist.json",
+        DIST / "materials_whitelist.json",
+    )
+
     # work/ (空目录)
     (DIST / "work").mkdir(exist_ok=True)
+
+    # data/ (数据库目录，自动创建但预建更清晰)
+    (DIST / "data").mkdir(exist_ok=True)
 
     # ── 3. README ──────────────────────────────────────
     print("[3/4] 生成说明文件 ...")
@@ -78,6 +89,7 @@ def main():
   presets/            — 预设参数文件
   frontend/           — Web 前端
   work/               — 运行时工作目录 (自动生成)
+  data/               — 数据库 (自动生成)
   _internal/          — 程序依赖 (勿删)
 """
     (DIST / "README.txt").write_text(readme, encoding="utf-8")
@@ -86,7 +98,7 @@ def main():
     size_mb = sum(
         f.stat().st_size for f in DIST.rglob("*") if f.is_file()
     ) / 1024 / 1024
-    print(f"[4/4] ✅ 构建完成  ({size_mb:.1f} MB)")
+    print(f"[4/4] 构建完成! ({size_mb:.1f} MB)")
     print(f"       位置: {DIST}")
     print(f"       运行: {DIST / 'FactSage_Ca_App.exe'}")
 

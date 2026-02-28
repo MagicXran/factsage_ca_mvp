@@ -92,6 +92,9 @@
         if (viewJobId) {
             await loadHistoryJob(viewJobId);
         }
+
+        // 初始加载历史记录
+        await refreshHistory();
     }
 
     // ── 计算选项加载 ──────────────────────────────────────

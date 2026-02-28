@@ -51,9 +51,13 @@ def _run_factsage_blocking(mac_path: Path) -> int:
 
 
 def _build_retry_steps(user_max: float) -> List[float]:
-    """构建去重排序的重试梯度"""
-    steps = sorted(set(_RETRY_STEPS + [user_max]))
-    return [s for s in steps if s > 0]
+    """构建重试梯度：用户值优先，仅追加更大的后备梯度。
+
+    物理依据: ESTA 搜索范围 [0, A_MAX]，若 user_max 无解，
+    更小的值是其子集，不可能有解——只向上扩展才有意义。
+    """
+    larger = sorted(s for s in _RETRY_STEPS if s > user_max)
+    return [user_max] + larger
 
 
 def _build_diagnostic(request: JobRequest, tried_limits: List[float]) -> str:
@@ -89,9 +93,10 @@ async def _real_calculation(
     retry_steps = _build_retry_steps(request.alpha_max)
     tried: List[float] = []
 
-    for a_max in retry_steps:
-        # 更新 equi 文件中的 A_MAX
-        re_render_equi_alpha_max(paths["equi_path"], a_max)
+    for i, a_max in enumerate(retry_steps):
+        # 首次运行：模板已用用户的 alpha_max 渲染好，无需覆写
+        if i > 0:
+            re_render_equi_alpha_max(paths["equi_path"], a_max)
         tried.append(a_max)
 
         logger.info("尝试 A_MAX=%.1f ...", a_max)

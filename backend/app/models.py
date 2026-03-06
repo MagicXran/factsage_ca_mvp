@@ -45,7 +45,7 @@ class ConditionsInput(BaseModel):
 
 
 class TargetInput(BaseModel):
-    element: str = Field(..., description="目标元素 (Al / S)")
+    element: str = Field(..., description="目标元素 (Al / Si / S)")
     value: float = Field(..., gt=0, description="目标含量值")
     unit: str = Field("wtpct", description="单位: ppm | wtpct")
 
@@ -56,9 +56,11 @@ class JobRequest(BaseModel):
     slag: SlagInput
     conditions: ConditionsInput
     target: TargetInput
-    solve_species: str = Field("Ca", description="求解物质（白名单校验）")
+    solve_species: str = Field("Al", description="求解物质（白名单校验）")
     alpha_guess: float = Field(0.5, gt=0, description="Alpha 初始猜测值")
     alpha_max: float = Field(10.0, gt=0, description="ESTA 搜索上限 (g)")
+    material_id: Optional[str] = Field(None, description="工业物料ID")
+    purity: Optional[float] = Field(None, gt=0, le=100, description="纯度百分比")
 
 
 # ─── 结果模型 ────────────────────────────────────────────
@@ -86,11 +88,15 @@ class SlagResult(BaseModel):
 
 class CalculationResult(BaseModel):
     alpha_g: float = Field(..., description="求解物质需要量 (g)")
-    solve_species: str = Field("Ca", description="求解物质名称")
+    solve_species: str = Field("Al", description="求解物质名称")
     T_K: float = 0.0
     P_atm: float = 1.0
     steel: SteelResult = Field(default_factory=SteelResult)
     slag: SlagResult = Field(default_factory=SlagResult)
+    material_id: Optional[str] = Field(None, description="工业物料ID")
+    material_name: Optional[str] = Field(None, description="工业物料名称")
+    purity: Optional[float] = Field(None, description="纯度百分比")
+    material_amount_g: Optional[float] = Field(None, description="工业物料用量 (g)")
 
 
 # ─── 响应模型 ────────────────────────────────────────────
@@ -110,4 +116,4 @@ class JobListItem(BaseModel):
     status: JobStatus
     calc_type: CalcType
     created_at: str
-    solve_species: str = "Ca"
+    solve_species: str = "Al"

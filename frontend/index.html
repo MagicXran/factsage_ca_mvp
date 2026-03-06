@@ -58,9 +58,13 @@
             <fieldset>
                 <legend>求解设定</legend>
                 <div class="field-grid">
-                    <label>求解物质
-                        <select id="solve_species"></select>
+                    <label>添加物料
+                        <select id="material_select"></select>
                     </label>
+                    <label>纯度 (%)
+                        <input type="number" id="purity" step="any" min="0" max="100">
+                    </label>
+                    <input type="hidden" id="solve_species" value="Al">
                     <label>Alpha 猜测 <input type="number" id="alpha_guess" step="any" value="0.5"></label>
                     <label>Alpha 上限 <input type="number" id="alpha_max" step="any" value="10"></label>
                 </div>
@@ -95,10 +99,18 @@
             <div id="resultContent" class="result-content hidden">
                 <!-- 求解量 -->
                 <div class="result-highlight">
-                    <span class="label" id="resAlphaLabel">Ca 需要量</span>
+                    <span class="label" id="resAlphaLabel">Al 需要量</span>
                     <span class="value" id="resAlpha">—</span>
                     <span class="unit">g</span>
                     <button id="btnDownload" class="btn btn-secondary btn-download hidden">📥 下载结果文件</button>
+                </div>
+
+                <!-- 工业物料用量 -->
+                <div class="result-highlight result-material hidden" id="resMaterialRow">
+                    <span class="label" id="resMaterialLabel">物料用量</span>
+                    <span class="value" id="resMaterialAmount">—</span>
+                    <span class="unit">g</span>
+                    <span class="sub-info" id="resMaterialPurity"></span>
                 </div>
 
                 <div class="result-columns">
@@ -140,7 +152,7 @@
                 <tr>
                     <th>任务 ID</th>
                     <th>类型</th>
-                    <th>求解物质</th>
+                    <th>物料</th>
                     <th>求解量 (g)</th>
                     <th>状态</th>
                     <th>时间</th>

@@ -111,7 +111,9 @@ async def _real_calculation(
             raise FileNotFoundError(f"FactSage 输出未找到: {xml_path}")
 
         try:
-            return parse_result_xml(xml_path, solve_species=request.solve_species)
+            result = parse_result_xml(xml_path, solve_species=request.solve_species)
+            _apply_material_amount(result, request)
+            return result
         except NoSolutionError:
             logger.warning("A_MAX=%.1f 无解，继续重试...", a_max)
             continue
@@ -138,8 +140,31 @@ async def _mock_calculation(request: JobRequest) -> CalculationResult:
     T_K = request.conditions.T_C + 273.15
 
     if request.target.element == "Al":
-        return _mock_deoxidation(request, total_steel_g, slag_total_g, T_K)
-    return _mock_desulfurization(request, total_steel_g, slag_total_g, T_K)
+        result = _mock_deoxidation(request, total_steel_g, slag_total_g, T_K)
+    elif request.target.element == "Si":
+        result = _mock_deox_si(request, total_steel_g, slag_total_g, T_K)
+    else:
+        result = _mock_desulfurization(request, total_steel_g, slag_total_g, T_K)
+
+    # 工业物料用量换算
+    _apply_material_amount(result, request)
+    return result
+
+
+def _apply_material_amount(result: CalculationResult, request: JobRequest) -> None:
+    """根据 material_id 和 purity 换算工业物料用量"""
+    if request.material_id and request.purity:
+        result.material_id = request.material_id
+        result.purity = request.purity
+        result.material_amount_g = round(
+            result.alpha_g / (request.purity / 100.0), 4
+        )
+        # 物料名称从配置中获取
+        from .template_renderer import load_industrial_materials
+        materials = load_industrial_materials()
+        mat = materials.get(request.material_id)
+        if mat:
+            result.material_name = mat["name"]
 
 
 def _mock_deoxidation(
@@ -170,6 +195,39 @@ def _mock_deoxidation(
             FeO_wtpct=0.78,
             CaS_wtpct=2.14,
             total_g=round(slag_g + alpha * 0.6, 2),
+        ),
+    )
+
+
+def _mock_deox_si(
+    req: JobRequest, steel_g: float, slag_g: float, T_K: float
+) -> CalculationResult:
+    """SiC 脱氧 mock：目标元素为 Si"""
+    alpha = round(req.steel.O_g * 50 + 0.003, 4)
+    o_ppm = round(max(2, req.steel.O_g * 1e4 * 0.35), 1)
+    return CalculationResult(
+        alpha_g=alpha,
+        solve_species=req.solve_species,
+        T_K=T_K,
+        P_atm=req.conditions.P_atm,
+        steel=SteelResult(
+            Fe_wtpct=round(req.steel.Fe_g / steel_g * 100, 3),
+            Mn_wtpct=0.0,
+            Si_wtpct=round(req.target.value, 6),
+            Al_wtpct=round(req.steel.Al_g / steel_g * 100 * 0.90, 5),
+            O_wtpct=round(o_ppm / 1e4, 5),
+            O_ppm=o_ppm,
+            S_wtpct=round(req.steel.S_g / steel_g * 100 * 0.85, 5),
+            total_g=round(steel_g, 2),
+        ),
+        slag=SlagResult(
+            CaO_wtpct=round(req.slag.CaO_g / slag_g * 100 * 1.02, 2),
+            Al2O3_wtpct=round(req.slag.Al2O3_g / slag_g * 100 * 0.97, 2),
+            SiO2_wtpct=round(req.slag.SiO2_g / slag_g * 100 * 1.10, 2),
+            MnO_wtpct=0.45,
+            FeO_wtpct=0.65,
+            CaS_wtpct=1.80,
+            total_g=round(slag_g + alpha * 0.5, 2),
         ),
     )
 

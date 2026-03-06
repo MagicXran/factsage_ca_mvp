@@ -214,6 +214,12 @@ input:focus, select:focus { border-color: var(--primary); }
     color: var(--primary-dark);
 }
 .result-highlight .unit { font-size: .9rem; color: var(--text-secondary); }
+.result-highlight .sub-info { font-size: .82rem; color: var(--text-secondary); margin-left: 4px; }
+.result-material {
+    background: #e8f5e9;
+    border-left-color: #4caf50;
+}
+.result-material .value { color: #2e7d32; }
 .btn-download {
     margin-left: auto;
     padding: 6px 16px;

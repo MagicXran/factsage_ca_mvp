@@ -1,0 +1,52 @@
+﻿{
+  "al_ingot": {
+    "name": "铝锭",
+    "solve_species": "Al",
+    "target_element": "Al",
+    "target_unit": "wtpct",
+    "calc_type": "deoxidation",
+    "default_purity": 99.9,
+    "purity_min": 95.0,
+    "purity_max": 100.0
+  },
+  "al_wire": {
+    "name": "铝线",
+    "solve_species": "Al",
+    "target_element": "Al",
+    "target_unit": "wtpct",
+    "calc_type": "deoxidation",
+    "default_purity": 99.9,
+    "purity_min": 95.0,
+    "purity_max": 100.0
+  },
+  "sic_70": {
+    "name": "70碳化硅",
+    "solve_species": "SiC",
+    "target_element": "Si",
+    "target_unit": "wtpct",
+    "calc_type": "deoxidation",
+    "default_purity": 70.0,
+    "purity_min": 60.0,
+    "purity_max": 80.0
+  },
+  "sic_90": {
+    "name": "90碳化硅",
+    "solve_species": "SiC",
+    "target_element": "Si",
+    "target_unit": "wtpct",
+    "calc_type": "deoxidation",
+    "default_purity": 90.0,
+    "purity_min": 80.0,
+    "purity_max": 100.0
+  },
+  "lime": {
+    "name": "白灰",
+    "solve_species": "CaO",
+    "target_element": "S",
+    "target_unit": "ppm",
+    "calc_type": "desulfurization",
+    "default_purity": 85.0,
+    "purity_min": 70.0,
+    "purity_max": 100.0
+  }
+}

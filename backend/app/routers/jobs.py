@@ -42,7 +42,7 @@ def _load_presets() -> dict:
             elem = data.get("target", {}).get("element", "")
             if "calc_type" not in data:
                 data["calc_type"] = (
-                    "deoxidation" if elem == "Al" else "desulfurization"
+                    "desulfurization" if elem == "S" else "deoxidation"
                 )
             presets[key] = data
         except Exception as exc:
@@ -66,6 +66,28 @@ async def validate_combination_api(
 @router.post("/calculate")
 async def calculate(request: JobRequest) -> JobResponse:
     """提交一次计算任务"""
+    # 如果请求包含 material_id，自动填充 solve_species / target 校验
+    if request.material_id:
+        from ..services.template_renderer import load_industrial_materials
+        materials = load_industrial_materials()
+        mat = materials.get(request.material_id)
+        if not mat:
+            raise HTTPException(
+                status_code=400,
+                detail=f"未知的工业物料ID: {request.material_id}"
+            )
+        # 自动设定 solve_species
+        request.solve_species = mat["solve_species"]
+        # 校验 target_element 一致性
+        if request.target.element != mat["target_element"]:
+            raise HTTPException(
+                status_code=400,
+                detail=(
+                    f"物料 {mat['name']} 的目标元素应为 {mat['target_element']}，"
+                    f"但请求中为 {request.target.element}"
+                )
+            )
+
     # 组合预检
     from ..services.template_renderer import validate_combination
     level, msg = validate_combination(
@@ -140,7 +162,7 @@ async def list_jobs() -> List[JobListItem]:
             status=j["status"],
             calc_type=j["calc_type"],
             created_at=j["created_at"],
-            solve_species=j["request"].solve_species if j.get("request") else "Ca",
+            solve_species=j["request"].solve_species if j.get("request") else "Al",
         )
         for j in job_manager.list_all()
     ]

@@ -46,5 +46,9 @@
   "CaC2": {
     "category": "脱硫剂（碳化物）",
     "default_state_token": "(25,1,s-FactPS,#1)"
+  },
+  "SiC": {
+    "category": "脱氧剂（碳化硅）",
+    "default_state_token": "(25,1,s-FactPS,#1)"
   }
 }

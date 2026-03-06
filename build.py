@@ -57,6 +57,12 @@ def main():
         DIST / "materials_whitelist.json",
     )
 
+    # industrial_materials.json（工业物料配置）
+    shutil.copy2(
+        ROOT / "backend" / "industrial_materials.json",
+        DIST / "industrial_materials.json",
+    )
+
     # work/ (空目录)
     (DIST / "work").mkdir(exist_ok=True)
 

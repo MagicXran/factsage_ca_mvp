@@ -1,18 +1,20 @@
 {
   "calc_type": "deoxidation",
-  "solve_species": "Ca",
+  "solve_species": "Al",
+  "material_id": "al_ingot",
+  "purity": 99.9,
   "steel": {
-    "Fe_g": 98.437,
-    "Mn_field": "1",
-    "Si_g": 0.5,
-    "Al_g": 0.05,
-    "O_g": 0.003,
-    "S_g": 0.01
+    "Fe_g": 99.833,
+    "Mn_field": "0.1",
+    "Si_g": 0.01,
+    "Al_g": 0.002,
+    "O_g": 0.04,
+    "S_g": 0.015
   },
   "slag": {
-    "CaO_g": 4.0,
-    "Al2O3_g": 4.0,
-    "SiO2_g": 2.0
+    "CaO_g": 1.5,
+    "Al2O3_g": 0.5,
+    "SiO2_g": 1.0
   },
   "conditions": {
     "T_C": 1600.0,
@@ -20,9 +22,9 @@
   },
   "target": {
     "element": "Al",
-    "value": 0.01,
+    "value": 0.03,
     "unit": "wtpct"
   },
-  "alpha_guess": 0.5,
+  "alpha_guess": 0.05,
   "alpha_max": 10
 }

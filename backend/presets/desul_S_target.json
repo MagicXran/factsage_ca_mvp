@@ -1,18 +1,20 @@
 {
   "calc_type": "desulfurization",
   "solve_species": "CaO",
+  "material_id": "lime",
+  "purity": 85.0,
   "steel": {
-    "Fe_g": 98.437,
-    "Mn_field": "1",
-    "Si_g": 0.5,
-    "Al_g": 0.05,
-    "O_g": 0.003,
-    "S_g": 0.01
+    "Fe_g": 99.203,
+    "Mn_field": "0.5",
+    "Si_g": 0.25,
+    "Al_g": 0.03,
+    "O_g": 0.002,
+    "S_g": 0.015
   },
   "slag": {
-    "CaO_g": 4.0,
-    "Al2O3_g": 4.0,
-    "SiO2_g": 2.0
+    "CaO_g": 2.5,
+    "Al2O3_g": 1.5,
+    "SiO2_g": 1.0
   },
   "conditions": {
     "T_C": 1600.0,
@@ -20,7 +22,7 @@
   },
   "target": {
     "element": "S",
-    "value": 50,
+    "value": 30,
     "unit": "ppm"
   },
   "alpha_guess": 0.5,

@@ -16,14 +16,19 @@ from ..models import JobRequest
 
 COMBINATION_MATRIX: Dict[str, Dict[str, list]] = {
     "Al": {
-        "recommended": ["Ca"],
-        "allowed": ["Mg"],
-        "blocked": ["Al", "Al2O3", "Si", "SiO2", "Ti", "MgO", "CaO", "CaF2", "CaC2", "Mn"],
+        "recommended": ["Al"],
+        "allowed": [],
+        "blocked": ["Ca", "Mg", "Al2O3", "Si", "SiO2", "Ti", "MgO", "CaO", "CaF2", "CaC2", "Mn", "SiC"],
+    },
+    "Si": {
+        "recommended": ["SiC"],
+        "allowed": [],
+        "blocked": ["Ca", "Mg", "Al", "Al2O3", "Si", "SiO2", "Ti", "MgO", "CaO", "CaF2", "CaC2", "Mn"],
     },
     "S": {
-        "recommended": ["CaC2", "Ca", "Mg"],
-        "allowed": ["CaF2", "Al"],
-        "blocked": ["Si", "SiO2", "Mn", "Ti", "MgO", "Al2O3", "CaO"],
+        "recommended": ["CaO"],
+        "allowed": ["CaF2"],
+        "blocked": ["Ca", "Mg", "Al", "Si", "SiO2", "Mn", "Ti", "MgO", "Al2O3", "CaC2", "SiC"],
     },
 }
 
@@ -65,6 +70,7 @@ def validate_combination(
 CALC_TYPE_TARGETS: Dict[str, list] = {
     "deoxidation": [
         {"element": "Al", "unit": "wtpct", "label": "Al (脱氧)", "default_value": 0.01},
+        {"element": "Si", "unit": "wtpct", "label": "Si (脱氧)", "default_value": 0.20},
     ],
     "desulfurization": [
         {"element": "S",  "unit": "ppm",   "label": "S (脱硫)",     "default_value": 50},
@@ -84,7 +90,24 @@ def get_calc_options() -> dict:
     return {
         "calc_types": CALC_TYPE_TARGETS,
         "species_by_target": species_by_target,
+        "industrial_materials": load_industrial_materials(),
     }
+
+
+# ── 工业物料配置 ──────────────────────────────────────────
+
+_INDUSTRIAL_MATERIALS: Dict[str, dict] | None = None
+
+
+def load_industrial_materials() -> Dict[str, dict]:
+    """加载并缓存 industrial_materials.json"""
+    global _INDUSTRIAL_MATERIALS
+    if _INDUSTRIAL_MATERIALS is None:
+        from ..config import _BASE_DIR
+        im_path = _BASE_DIR / "industrial_materials.json"
+        with open(im_path, "r", encoding="utf-8-sig") as f:
+            _INDUSTRIAL_MATERIALS = json.load(f)
+    return _INDUSTRIAL_MATERIALS
 
 
 # ── 白名单 ──────────────────────────────────────────────

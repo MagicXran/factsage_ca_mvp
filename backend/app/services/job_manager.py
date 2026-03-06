@@ -79,12 +79,17 @@ class JobManager:
         # result.xml 优先策略：存在时解析并与 DB 比较，不同则更新
         solve_species = job["request"].solve_species if job["request"] else "Ca"
         xml_result = self._parse_result_from_disk(job_id, solve_species)
-        if xml_result is not None and xml_result != job["result"]:
-            self._db.update_result(
-                job_id, JobStatus.completed.value, xml_result.model_dump_json()
-            )
-            job["result"] = xml_result
-            logger.info("任务 %s 已从 result.xml 刷新结果", job_id)
+        if xml_result is not None:
+            # XML 只含基础计算字段，需要从 request 补充工业物料信息
+            if job["request"]:
+                from .factsage_runner import _apply_material_amount
+                _apply_material_amount(xml_result, job["request"])
+            if xml_result != job["result"]:
+                self._db.update_result(
+                    job_id, JobStatus.completed.value, xml_result.model_dump_json()
+                )
+                job["result"] = xml_result
+                logger.info("任务 %s 已从 result.xml 刷新结果", job_id)
         return job
 
     def list_all(self, limit: int = 100) -> List[Dict]:
@@ -176,6 +181,11 @@ class JobManager:
         result = cls._parse_result_from_disk(job_id, solve_species=solve_species)
         if result is None:
             return None
+
+        # XML 只含基础计算字段，需要从 request 补充工业物料信息
+        if request:
+            from .factsage_runner import _apply_material_amount
+            _apply_material_amount(result, request)
 
         xml_path = settings.work_root / job_id / "out" / "result.xml"
         recovered_created_at = created_at

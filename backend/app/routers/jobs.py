@@ -163,6 +163,7 @@ async def list_jobs() -> List[JobListItem]:
             calc_type=j["calc_type"],
             created_at=j["created_at"],
             solve_species=j["request"].solve_species if j.get("request") else "Al",
+            material_id=j["request"].material_id if j.get("request") else None,
         )
         for j in job_manager.list_all()
     ]

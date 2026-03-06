@@ -117,3 +117,4 @@ class JobListItem(BaseModel):
     calc_type: CalcType
     created_at: str
     solve_species: str = "Al"
+    material_id: Optional[str] = None

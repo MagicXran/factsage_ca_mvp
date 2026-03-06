@@ -141,6 +141,57 @@
             <div id="resultError" class="placeholder error hidden">
                 <p id="errorMsg"></p>
             </div>
+
+            <!-- ── 原理说明（可折叠） ── -->
+            <div class="guide-section">
+                <details>
+                    <summary>100g 归一化规则</summary>
+                    <div class="guide-body">
+                        <p>FactSage 以 <strong>100g 钢液</strong>为基准进行归一化计算。所有输入量都是基于这个基准的克数。</p>
+                        <p class="guide-rule">Fe + Mn + Si + Al + O + S = <strong>100.000 g</strong>（必须精确相等）</p>
+                        <p>渣组分（CaO、Al₂O₃、SiO₂）单独输入，不参与 100g 约束。渣钢比 = 渣总量 / 100g。</p>
+                        <p><strong>实际换算</strong>：计算结果按实际钢水量等比放大。例如 alpha = 2.5g，钢水量 130 吨：</p>
+                        <p class="guide-formula">实际用量 = 2.5 × (130,000,000 / 100) = 3,250 kg</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>输入参数参考值</summary>
+                    <div class="guide-body">
+                        <p><strong>脱氧（转炉出钢后）</strong>— Si/Mn/Al 极低，O 很高：</p>
+                        <table class="guide-table">
+                            <tr><th>参数</th><th>典型范围</th><th>说明</th></tr>
+                            <tr><td>Si</td><td>~0.01%</td><td>吹炼几乎烧损殆尽</td></tr>
+                            <tr><td>Mn</td><td>~0.1%</td><td>大部分氧化入渣</td></tr>
+                            <tr><td>Al</td><td>~0.002%</td><td>脱氧前极低</td></tr>
+                            <tr><td>O</td><td>300-600 ppm</td><td>转炉出钢高氧状态</td></tr>
+                            <tr><td>S</td><td>~150 ppm</td><td>未变化</td></tr>
+                        </table>
+                        <p><strong>脱硫（LF精炼初期，已脱氧）</strong>— Si/Mn 已合金化，O 已降低：</p>
+                        <table class="guide-table">
+                            <tr><th>参数</th><th>典型范围</th><th>说明</th></tr>
+                            <tr><td>Si</td><td>~0.25%</td><td>硅铁合金化后</td></tr>
+                            <tr><td>Mn</td><td>~0.5%</td><td>已合金化</td></tr>
+                            <tr><td>Al</td><td>~0.03%</td><td>脱氧后残余</td></tr>
+                            <tr><td>O</td><td>~20 ppm</td><td>已脱氧</td></tr>
+                            <tr><td>S</td><td>~150 ppm</td><td>待脱硫</td></tr>
+                        </table>
+                        <p class="guide-note">注意：以上为 100g 基准下的克数。例如 O = 400ppm 对应 O_g = 0.04。</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>结果解读与换算</summary>
+                    <div class="guide-body">
+                        <p><strong>求解量 (alpha_g)</strong>：FactSage 求出的纯物质需要量（每 100g 钢液）。这是热力学平衡计算的直接结果。</p>
+                        <p><strong>物料用量</strong>：考虑工业物料纯度后的实际用量：</p>
+                        <p class="guide-formula">物料用量 = alpha_g / (纯度% / 100)</p>
+                        <p>例如：alpha_g = 2.5g（纯 Al），铝锭纯度 99.9%，则需铝锭 = 2.5 / 0.999 = 2.503g。</p>
+                        <p><strong>钢液平衡组成</strong>：添加物料并达到热力学平衡后，钢液中各元素的质量百分比（wt%）。因为总质量变化，输入的克数和结果的百分比不会完全一致。</p>
+                        <p><strong>渣平衡组成</strong>：平衡态渣中各氧化物的质量百分比。CaS 含量反映脱硫效果。</p>
+                    </div>
+                </details>
+            </div>
         </section>
     </main>
 

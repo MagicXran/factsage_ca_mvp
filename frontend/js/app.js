@@ -367,7 +367,7 @@
         try {
             const job = await api("GET", `/jobs/${jobId}`);
             if (!job) {
-                showError("任务不存在: " + jobId);
+                _fallbackToHome(jobId);
                 return;
             }
 
@@ -400,8 +400,21 @@
 
             refreshHistory();
         } catch (e) {
-            showError("加载历史任务失败: " + e.message);
+            // 任务不存在（404）→ 静默回退；其他错误才报红
+            if (e.message.includes("任务不存在") || e.message.includes("Not Found")) {
+                _fallbackToHome(jobId);
+            } else {
+                showError("加载历史任务失败: " + e.message);
+            }
         }
+    }
+
+    /** 任务不存在时：清理 URL 参数，回退到初始界面 */
+    function _fallbackToHome(jobId) {
+        console.warn("[FactSage] 历史任务不存在，已回退:", jobId);
+        window.history.replaceState(null, "", "/");
+        resultLoading.classList.add("hidden");
+        resultPlaceholder.classList.remove("hidden");
     }
 
     /** 进入历史查看模式：输入面板加提示，表单只读 */
@@ -527,15 +540,10 @@
                     completed: "✓ 完成",
                     failed: "✗ 失败",
                 }[j.status] || j.status;
-                // 显示物料名称（从缓存查找）
+                // 显示物料名称（用 material_id 精确匹配）
                 let materialLabel = j.solve_species || "Al";
-                if (industrialMaterials) {
-                    for (const [, mat] of Object.entries(industrialMaterials)) {
-                        if (mat.solve_species === j.solve_species) {
-                            materialLabel = mat.name;
-                            break;
-                        }
-                    }
+                if (industrialMaterials && j.material_id && industrialMaterials[j.material_id]) {
+                    materialLabel = industrialMaterials[j.material_id].name;
                 }
                 return '<tr>'
                     + '<td><a href="?job_id=' + j.job_id + '" class="job-link">' + j.job_id + '</a></td>'

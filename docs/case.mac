@@ -1,0 +1,20 @@
+REM ===== run_equilib.mac (FactSage 8.3/8.4) =====
+VARIABLE %EquiFile %OutDir %TempC %PressAtm
+
+
+%EquiFile = "D:\FactSage-Apps\FactSage_Ca_App\work\5ac7c4e5\input\case.equi"
+%OutDir   = "D:\FactSage-Apps\FactSage_Ca_App\work\5ac7c4e5\out\"
+
+%TempC    = 1580.0
+%PressAtm = 1.0
+
+OPEN %EquiFile
+SET FINAL T %TempC
+SET FINAL P %PressAtm
+
+CALC
+
+SAVE "%OutDirresult.xml"
+SAVE "%OutDirresult.res"
+
+END

@@ -29,6 +29,14 @@
     const resMaterialAmount = $("#resMaterialAmount");
     const resMaterialPurity = $("#resMaterialPurity");
 
+    const tonnageInput = $("#tonnageInput");
+    const tonnageResults = $("#tonnageResults");
+    const tonnagePureValue = $("#tonnagePureValue");
+    const tonnagePureName = $("#tonnagePureName");
+    const tonnageMaterialValue = $("#tonnageMaterialValue");
+    const tonnageMaterialName = $("#tonnageMaterialName");
+    const tonnageMaterialRow = $("#tonnageMaterial");
+
     const steelTbody = $("#steelTable tbody");
     const slagTbody = $("#slagTable tbody");
     const historyTbody = $("#historyTable tbody");
@@ -38,6 +46,8 @@
     let currentType = "deoxidation";
     // 当前完成的任务 ID（用于下载）
     let currentJobId = null;
+    // 当前结果缓存（用于吨位换算）
+    let currentResult = null;
 
     // 预设名称映射
     const TYPE_TO_PRESET = {
@@ -84,6 +94,11 @@
             updateUnitDisplay(elem);
             setVal("target_value", getTargetDefault(elem));
         });
+
+        // 吨位换算：实时计算 + 记忆上次输入
+        tonnageInput.addEventListener("input", updateTonnageConversion);
+        const savedTonnage = localStorage.getItem("factsage_tonnage");
+        if (savedTonnage) tonnageInput.value = savedTonnage;
 
         // 加载默认预设
         await loadPreset();
@@ -512,12 +527,54 @@
         slagTbody.innerHTML = slagRows
             .map(([k, v]) => `<tr><td>${k}</td><td>${fmtPct(v)}</td></tr>`)
             .join("");
+
+        // 缓存结果 → 触发吨位换算
+        currentResult = r;
+        updateTonnageConversion();
     }
 
     function fmtPct(v) {
         if (v >= 1) return v.toFixed(2) + "%";
         if (v >= 0.01) return v.toFixed(4) + "%";
         return v.toExponential(3) + "%";
+    }
+
+    // ── 吨位换算 ──────────────────────────────────────
+
+    /** 格式化 kg 值：>= 1000 kg 同时显示吨 */
+    function fmtKg(kg) {
+        if (kg >= 1000) {
+            return kg.toFixed(1) + " kg (" + (kg / 1000).toFixed(2) + " 吨)";
+        }
+        return kg.toFixed(1) + " kg";
+    }
+
+    function updateTonnageConversion() {
+        const tonnage = parseFloat(tonnageInput.value);
+        if (!currentResult || !tonnage || tonnage <= 0) {
+            tonnageResults.classList.add("hidden");
+            return;
+        }
+
+        // 记忆吨数
+        localStorage.setItem("factsage_tonnage", tonnageInput.value);
+
+        // 核心公式: actual_kg = amount_g_per_100g × tonnage × 10
+        const pureKg = currentResult.alpha_g * tonnage * 10;
+        tonnagePureName.textContent = (currentResult.solve_species || "Al") + " 实际用量";
+        tonnagePureValue.textContent = fmtKg(pureKg);
+
+        // 工业物料换算
+        if (currentResult.material_name && currentResult.material_amount_g != null) {
+            const matKg = currentResult.material_amount_g * tonnage * 10;
+            tonnageMaterialName.textContent = currentResult.material_name + " 实际用量";
+            tonnageMaterialValue.textContent = fmtKg(matKg);
+            tonnageMaterialRow.classList.remove("hidden");
+        } else {
+            tonnageMaterialRow.classList.add("hidden");
+        }
+
+        tonnageResults.classList.remove("hidden");
     }
 
     // ── 历史记录 ──────────────────────────────────────

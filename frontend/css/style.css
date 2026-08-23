@@ -226,6 +226,70 @@ input:focus, select:focus { border-color: var(--primary); }
     font-size: .82rem;
 }
 
+/* ── 实际用量换算 ────────────────────────────────── */
+.tonnage-converter {
+    background: #fafafa;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 20px;
+}
+.tonnage-input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.tonnage-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .88rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    flex: 0 1 220px;
+}
+.tonnage-label input {
+    width: 120px;
+    flex: none;
+    text-align: right;
+    font-weight: 600;
+}
+.tonnage-unit {
+    font-size: .85rem;
+    color: var(--text-secondary);
+}
+.tonnage-results {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.tonnage-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 8px 14px;
+    border-radius: 4px;
+}
+.tonnage-row:first-child {
+    background: var(--primary-light);
+}
+.tonnage-row:last-child {
+    background: #e8f5e9;
+}
+.tonnage-name {
+    font-size: .88rem;
+    color: var(--text-secondary);
+}
+.tonnage-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+.tonnage-row:last-child .tonnage-value {
+    color: #2e7d32;
+}
+
 .result-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;

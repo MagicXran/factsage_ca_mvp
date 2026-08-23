@@ -113,6 +113,26 @@
                     <span class="sub-info" id="resMaterialPurity"></span>
                 </div>
 
+                <!-- 实际用量换算 -->
+                <div class="tonnage-converter" id="tonnageConverter">
+                    <div class="tonnage-input-row">
+                        <label class="tonnage-label">钢水量
+                            <input type="number" id="tonnageInput" step="any" min="0.1" max="500" placeholder="吨">
+                        </label>
+                        <span class="tonnage-unit">吨</span>
+                    </div>
+                    <div class="tonnage-results hidden" id="tonnageResults">
+                        <div class="tonnage-row" id="tonnagePure">
+                            <span class="tonnage-name" id="tonnagePureName">Al 实际用量</span>
+                            <span class="tonnage-value" id="tonnagePureValue">—</span>
+                        </div>
+                        <div class="tonnage-row" id="tonnageMaterial">
+                            <span class="tonnage-name" id="tonnageMaterialName">物料实际用量</span>
+                            <span class="tonnage-value" id="tonnageMaterialValue">—</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="result-columns">
                     <!-- 钢液 -->
                     <div class="result-block">
